@@ -8,7 +8,7 @@ class Register extends Component {
     componentDidMount(){
         auth.onAuthStateChanged(user=>{
             if(user){
-                //agregar navegación
+                this.props.navigation.navigate('Login')
             }
         })
     }
@@ -16,10 +16,9 @@ class Register extends Component {
   render() {
     return (
       <View>
-        <FormRegister // agregar navegación
-        /> 
+        <FormRegister navigation={this.props.navigation}/>
         <Text>Ya tenes una cuenta</Text>
-        <TouchableOpacity onPress //agregar navegación 
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')} 
         >
         <Text>Ingresa aquí!</Text>
         </TouchableOpacity> 

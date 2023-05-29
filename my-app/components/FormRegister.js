@@ -12,15 +12,18 @@ class FormRegister extends Component {
     }
 
     registrarUsuario(mail, password){
+        
         auth.createUserWithEmailAndPassword(mail, password)
         .then (data =>{
-            // agregar navegación
+            console.log('Entramos a la promesa del create')
+            this.props.navigation.navigate('Login')
+
             db.collection('users').add({
                 owner: auth.currentUser.email,
                 createdAt: Date.now()
             })
-            .then(re => console.log(res))
-            .catch(err = console.log(err))
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         
         })
         .catch(err => console.log(err))
@@ -30,20 +33,20 @@ class FormRegister extends Component {
       <View>
         <Text>Registrate!!</Text>
         <TextInput
-        style = {StyleSheet.input}
+        style = {styles.input}
         placeholder= 'Digite su email'
         keyboardType="email-adress"
         onChangeText={(text) => this.setState({inputMail:text})}
         value={this.state.inputMail}
         />
         <TextInput
-        style= {StyleSheet.input}
+        style= {styles.input}
         placeholder= 'Digite su contraseña'
         onChangeText={(text) => this.setState({inputPassword: text})}
         value = {this.state.inputPassword}
         secureTextEntry= {true}
         />
-        <TouchableOpacity style={StyleSheet.boton} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}>
+        <TouchableOpacity style={styles.boton} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}>
            <Text style = {styles.btnText}> Registrarme</Text> 
         </TouchableOpacity>
         
@@ -69,7 +72,6 @@ const styles = StyleSheet.create({
     },
     btnText:{
         textAlign:'center',
-        fontWeight:'bold',
-        color:'white'
+        fontWeight:'bold'
     }
 })

@@ -30,9 +30,7 @@ export default class Feed extends Component {
     return (
       <View>
         <Text>Feed</Text>
-        <Posteos
-        data = {this.state.posteos}
-        />
+        
       </View>
     )
   }

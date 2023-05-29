@@ -6,7 +6,7 @@ class Login extends Component {
   render() {
     return (
       <View>
-       <FormLogin/>
+       <FormLogin navigation={this.props.navigation}/>
        <Text>
 No tenes cuenta?
 <TouchableOpacity
