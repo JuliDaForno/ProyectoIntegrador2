@@ -7,7 +7,10 @@ class FormRegister extends Component {
         super(props)
         this.state = {
             inputMail: '', 
-            inputPassword: ''
+            inputPassword: '',
+            nombreDeUsuario:'',
+            bio:'',
+            FotoPerfil:'',
         }
     }
 
@@ -45,6 +48,20 @@ class FormRegister extends Component {
         onChangeText={(text) => this.setState({inputPassword: text})}
         value = {this.state.inputPassword}
         secureTextEntry= {true}
+        />
+        <TextInput
+        style = {styles.input}
+        placeholder= 'Cree su nombre de usuario'
+        keyboardType="default"
+        onChangeText={(text) => this.setState({nombreDeUsuario:text})}
+        value={this.state.nombreDeUsuario}
+        />
+        <TextInput
+        style = {styles.input}
+        placeholder= 'Escriba una bio'
+        keyboardType="default"
+        onChangeText={(text) => this.setState({bio:text})}
+        value={this.state.bio}
         />
         <TouchableOpacity style={styles.boton} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}>
            <Text style = {styles.btnText}> Registrarme</Text> 
