@@ -4,7 +4,7 @@ import { db } from '../firebase/config'
 
 
 
-export default class Feed extends Component {
+export default class Home extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -29,7 +29,7 @@ export default class Feed extends Component {
   render() {
     return (
       <View>
-        <Text>Feed</Text>
+        <Text>Home</Text>
         
       </View>
     )

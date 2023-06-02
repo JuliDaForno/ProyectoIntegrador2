@@ -4,7 +4,9 @@ import FormRegister from '../components/FormRegister'
 import { auth } from '../firebase/config'
 
 class Register extends Component {
-
+  constructor(props){
+    super(props)
+  }
     componentDidMount(){
         auth.onAuthStateChanged(user=>{
             if(user){
@@ -22,6 +24,12 @@ class Register extends Component {
         >
         <Text>Ingresa aquí!</Text>
         </TouchableOpacity> 
+
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate('HomeMenu')} 
+        >
+        <Text>HOME</Text>
+        </TouchableOpacity> 
+
       </View>
     )
   }

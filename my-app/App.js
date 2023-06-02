@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './screens/Login';
-import Register from './screens/Register';
-import Feed from './screens/Feed';
+import Login from './src/screens/Login';
+import Register from './src/screens/Register';
+import HomeMenu from './src/navigation/HomeMenu';
 
 
 
@@ -32,8 +32,8 @@ export default function App() {
         }
         />
         <Stack.Screen
-        name='Feed'
-        component={Feed}
+        name='HomeMenu'
+        component={HomeMenu}
         options={
           {
             headerShown:false

@@ -15,7 +15,7 @@ import {auth} from '../firebase/config'
 
     entrar(email, password){
         auth.signInWithEmailAndPassword(email, password)
-        .then( resp => this.props.navigation.navigate('Feed'))
+        .then( resp => this.props.navigation.navigate('Home'))
         .catch( err => console.log(err))
     }
   render() {
@@ -42,7 +42,7 @@ import {auth} from '../firebase/config'
                     style={styles.boton}
                     onPress={()=> this.entrar(this.state.email, this.state.password)}
                 >
-                    <Text>Ingresar</Text>
+                    <Text style={styles.btnText}>Ingresar</Text>
                 </TouchableOpacity>
 </View>
     
@@ -56,14 +56,20 @@ const styles = StyleSheet.create({
     },
     input:{
         borderWidth:1,
-        borderColor: 'pink',
-        borderRadius:5,
-        marginTop:18,
-        padding:12
+        borderColor: '#3d3d3d',
+        marginTop: 24,
+        height:24,
+        padding:5
     },
     boton:{
-        marginVertical:32,
-        backgroundColor:'red',
+        marginTop:32,
+        backgroundColor: '#54d0e0',
+        padding: 10,
+        borderRadius:20,
+    },     
+    btnText:{
+        textAlign:'center',
+        fontWeight:'bold'
     }
 })
 export default FormLogin
