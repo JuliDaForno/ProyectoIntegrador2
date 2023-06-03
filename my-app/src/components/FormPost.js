@@ -1,4 +1,4 @@
-import { Text, View, TextInput, StyleSheet } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 
 class FormPost extends Component {
@@ -10,13 +10,13 @@ class FormPost extends Component {
         return (
             <View>
                 <TextInput
-                style= {styles.input}
-                keyboardType="default"
-                placeholder='Ingresa la descripcion de tu post'
-                value= {this.props.stateDescripcion}
-                onChangeText= {(text)=> this.props.atualizarDescripcion(text)}
-                multiline= {true}
-                rows= {5}
+                    style={styles.input}
+                    keyboardType='default'
+                    value={this.props.stateDescripcion}
+                    placeholder='Aca vas a hacer tus posteos'
+                    onChangeText={(text) => this.props.actualizarDescripcion(text)}
+                    multiline={true}
+                    rows={5}
                 />
             </View>
         )

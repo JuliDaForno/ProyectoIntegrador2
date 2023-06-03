@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { db } from '../firebase/config'
 
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props)
@@ -30,7 +29,6 @@ export default class Home extends Component {
     return (
       <View>
         <Text>Home</Text>
-
       </View>
     )
   }
