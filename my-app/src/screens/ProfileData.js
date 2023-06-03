@@ -4,7 +4,6 @@ import { auth,db } from '../firebase/config'
 
 class ProfileData extends Component {
     constuctor(props){
-        super(props)
         this.state={
             userData:{},
             props: props,
