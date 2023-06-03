@@ -7,7 +7,7 @@ import { AntDesign } from '@expo/vector-icons'
 import Home from '../screens/Home'
 import MyProfile from '../screens/MyProfile'
 import NewPost from '../screens/NewPost'
-import ProfileEdit from '../screens/ProfileEdit'
+import ProfileUsers from '../screens/ProfileUsers'
 
 const Tab = createBottomTabNavigator()
 
@@ -41,8 +41,8 @@ class HomeMenu extends Component {
                 />
 
                 <Tab.Screen
-                    name='ProfileEdit'
-                    component={ProfileEdit}
+                    name='ProfileUsers'
+                    component={ProfileUsers}
                     options={{
                         headerShown: false,
                         tabBarIcon: () => <AntDesign name='profile' size={24} />
