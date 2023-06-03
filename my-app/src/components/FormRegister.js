@@ -11,12 +11,11 @@ class FormRegister extends Component {
         }
     }
 
-    registrarUsuario(mail, password){
-        
+    registrarUsuario(mail, password){ 
         auth.createUserWithEmailAndPassword(mail, password)
         .then (data =>{
             console.log('Entramos a la promesa del create')
-            this.props.navigation.navigate('Login')
+            this.props.navigation.navigate('HomeMenu')
 
             db.collection('users').add({
                 owner: auth.currentUser.email,
