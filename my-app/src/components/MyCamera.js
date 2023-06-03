@@ -1,31 +1,103 @@
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
-import {Camera} from 'expo-camera'
+import { Camera } from 'expo-camera'
+import {storage} from '../firebase/config'
+
 
 class MyCamera extends Component {
-    constructor (props){
-        super(props)
-        this.state= {
-          mostrarCamara: false,
-          fotoTomada: ''
-        }
-        this.metodosCamara 
+  constructor(props) {
+    super(props)
+    this.state = {
+      mostrarCamara: false,
+      fotoTomada: ''
     }
-  
-    componentDidMount(){
-      Camera.getCameraPermissionsAsync()
-      .then(resp => this.setState({mostrarCamara: true}))
-      .catch(err=> console.log(err))
-    }
-    
+    this.metodosCamara = null
+  }
+
+  componentDidMount() {
+    Camera.requestCameraPermissionsAsync()
+      .then(resp => this.setState({ mostrarCamara: true }))
+      .catch(err => console.log(err))
+  }
+
+  tomarFoto() {
+    this.metodosCamara.takePictureAsync()
+      .then(fotoEnMemoria => {
+        this.setState({
+          fotoTomada: fotoEnMemoria.uri,
+          mostrarCamara: false
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
+  aceptarFoto(){
+    fetch(this.state.fotoTomada)
+    .then(resp=> resp.blob())
+    .then(imagen=> {
+      const ref = storage.ref(`fotos/${Date.now()}.jpg`)
+      ref.put(imagen)
+      .then(()=>{
+        ref.getDownloadURL()
+        .then((url)=> this.props.actualizarEstadoFoto(url))
+      })
+    })
+    .catch(err=> console.log(err))
+  }
+
+  rechazarFoto(){
+    this.setState({
+      mostrarCamara: true,
+      fotoTomada: ''
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Camera
-        style={styles.camara}
-        type= {Camera.Constants.Type.back}
-        ref={(metodosComponente)=>this.metodosCamara = metodosComponente}
-        />
+        {
+          this.state.mostrarCamara && this.state.fotoTomada === '' ?
+            <>
+              <Camera
+                style={styles.camara}
+                type={Camera.Constants.Type.back}
+                ref={(metodosComponente) => this.metodosCamara = metodosComponente}
+              />
+              <TouchableOpacity
+                onPress={() => this.tomatFoto()}
+              >
+                <Text>
+                  Tomar foto
+                </Text>
+              </TouchableOpacity>
+            </>
+            : this.state.mostrarCamara === false && this.state.fotoTomada !== '' ?
+            <>
+            <Image
+              source= {{uri: this.state.fotoTomada}}
+              style = {styles.img}
+            />
+            <View>
+              <TouchableOpacity
+              onPress={()=> this.aceptarFoto()}
+              >
+                <Text>
+                  Aceptar foto
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+              onPress={()=> this.rechazarFoto}
+              >
+                <Text>
+                  Rechazar foto
+                </Text>
+              </TouchableOpacity>
+            </View>
+            </>
+            :
+            <Text>No tienes permisos para usar la Camara</Text>
+        }
       </View>
     )
   }
@@ -36,7 +108,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   camara: {
-    height: 250
+    flex: 1
+  },
+  img: {
+    flex: 1
   }
 })
 
