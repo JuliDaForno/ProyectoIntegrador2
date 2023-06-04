@@ -58,7 +58,7 @@ logout(){
         <FlatList
         data={this.state.posteos}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item})=>  <Home data={item} HomeProps={this.props}/>} /> 
+        renderItem={({item})=>  <Home data={item} />} /> 
                 </TouchableOpacity>
 
             </View>
