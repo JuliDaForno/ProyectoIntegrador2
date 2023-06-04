@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 import ProfileData from '../screens/ProfileData'
-import ProfileUsers from './ProfileUsers'
+import ProfileUsers from '../screens/ProfileUsers'
 
 
 class MyProfile extends Component {
