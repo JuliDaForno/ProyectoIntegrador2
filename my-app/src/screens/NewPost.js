@@ -1,10 +1,10 @@
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import FormPost from '../components/FormPost'
 import { db, auth } from '../firebase/config'
 import MyCamera from '../components/MyCamera'
 
-class NewPosts extends Component {
+class NewPost extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -18,6 +18,12 @@ class NewPosts extends Component {
   actualizarDescripcion(text) {
     this.setState({
       descripcion: text
+    })
+  }
+
+  actualizarEstadoFoto(urlFoto) {
+    this.setState({
+      foto: urlFoto
     })
   }
 
@@ -39,12 +45,14 @@ class NewPosts extends Component {
 
   render() {
     return (
-      <View>
+      <View styñe={styles.container} > 
         {
           this.state.foto === '' ?
-            <MyCamera />
+            <MyCamera
+              actualizarEstadoFoto={() => this.actualizarEstadoFoto(urlFoto)}
+            />
             :
-            <View>
+            <>
               <FormPost stateDescripcion={this.state.descripcion} actualizarDescripcion={(text) => this.actualizarDescripcion(text)} />
               <TouchableOpacity
                 onPress={() => this.crearPosteo({
@@ -54,22 +62,19 @@ class NewPosts extends Component {
                   comments: this.state.comments
                 })}
               >
-                <Text>Enviar el posteo</Text>
+                <Text> Enviar el posteo</Text>
               </TouchableOpacity>
-            </View>
+            </>
         }
       </View>
     )
   }
 }
 
-export default NewPosts
+const styles = StyleSheet.create({
+  container:{
+    flex: 1
+  }
+})
 
-/*         {
-          this.state.foto === '' ?
-            <MyCamera />
-            :
-            <Text>NewPost</Text>
-        } 
-        
- */
+export default NewPost

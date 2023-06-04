@@ -6,13 +6,13 @@ import firebase from 'firebase'
 
 
 class Post extends Component {
-
-  constructor(props){
+    constructor(props){
     super(props)
-    this.state={
-      isLiked:false
+        this.state={
+            isLiked: false,
+            owner: false
+        }
     }
-  }
 
   componentDidMount(){
     let estaMiLike = this.props.data.data.likes.includes(auth.currentUser.email)
@@ -57,6 +57,11 @@ class Post extends Component {
   render() {
     return (
       <View>
+        <Text>Post</Text>
+        <TouchableOpacity onPress={() => this.props.HomeProps.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
+                            <Text>{this.props.data.data.owner}</Text>
+                        </TouchableOpacity>
+       
         <Text>{this.props.data.data.descripcion}</Text>
         {
           this.state.isLiked ?

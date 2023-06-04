@@ -69,7 +69,7 @@ class FormRegister extends Component {
         <Text style = {styles.btnText}> Registrarme</Text> 
         </TouchableOpacity>
      :
-            <Text style={styles.alert}>Estos campos deben ser obligatorios</Text>
+            <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario deben ser obligatorios</Text>
             
         }
 

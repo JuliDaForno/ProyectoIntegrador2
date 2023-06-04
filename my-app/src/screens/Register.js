@@ -21,8 +21,7 @@ class Register extends Component {
         <FormRegister navigation={this.props.navigation} />
         <Text>Ya tenes una cuenta</Text>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}
-        >
-          <Text>Ingresa aquí!</Text>
+        > <Text>Ingresa aquí!</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeMenu')}
