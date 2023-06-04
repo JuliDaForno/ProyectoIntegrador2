@@ -1,42 +1,43 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, FlatList, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import {auth, db} from '../firebase/config'
 import Home from './Home'
+import Post from '../components/Post'
 
 
-class ProfileEdit extends Component {
-  constuctor(props){
-        
+class ProfileUsers extends Component {
+  constructor(props){
+    super(props)
     this.state={
-        userData:{},
+        userInfo:{},
         props: props,
         posteos:[]
     }
 }
 componentDidMount(){
-db.collection('users').where('owner', '==', this.props.route.params.email).onSnapshot(
+  db.collection('users').where('owner', '==', this.props.route.params.email).onSnapshot(
     docs => {
-docs.forEach(doc=>{
-this.setState({
-    userData:doc.data()
-})
-})
-    }
-)
-db.collection('posts').where('owner', '==', this.props.route.params.email).onSnapshot(
-    docs =>{
-        let posts=[];
         docs.forEach(doc => {
-            posts.push({
-                id: doc.id,
-                data: doc.data()
+            this.setState({
+                userInfo: doc.data()
             })
-        });
-        this.setState({
-            posteos:posts
         })
-    }
+    })
+db.collection('posts').where('owner', '==', this.props.route.params.email).onSnapshot(
+  docs => {
+      let posts = [];
+      docs.forEach(doc => {
+          posts.push({
+              id: doc.id,
+              data: doc.data()
+          })
+      })
+      this.setState({
+          posteos: posts
+      })
+  }
 )
+
 }
   
 
@@ -57,4 +58,4 @@ db.collection('posts').where('owner', '==', this.props.route.params.email).onSna
   }
 }
 
-export default ProfileEdit
+export default ProfileUsers

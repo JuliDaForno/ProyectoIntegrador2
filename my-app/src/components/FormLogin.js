@@ -20,7 +20,7 @@ class FormLogin extends Component {
     }
     render() {
         return (
-            <View>
+            <View style = {styles.body}>
                 <TextInput
                     placeholder='Ingresa tu email'
                     keyboardType='email-address'
@@ -64,13 +64,16 @@ const styles = StyleSheet.create({
     },
     boton: {
         marginTop: 32,
-        backgroundColor: '#54d0e0',
+        backgroundColor: 'pink',
         padding: 10,
         borderRadius: 20,
     },
     btnText: {
         textAlign: 'center',
         fontWeight: 'bold'
+    },
+    body:{
+        backgroundColor: 'pink',
     }
 })
 export default FormLogin

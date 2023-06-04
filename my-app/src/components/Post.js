@@ -5,10 +5,11 @@ import firebase from 'firebase'
 import {db, auth} from '../firebase/config'
 
 class Post extends Component {
-    constructor(props)
-    super(props){
+    constructor(props){
+    super(props)
         this.state={
-            isLiked: false
+            isLiked: false,
+            owner: false
         }
     }
 
@@ -49,6 +50,10 @@ class Post extends Component {
     return (
       <View>
         <Text>Post</Text>
+        <TouchableOpacity onPress={() => this.props.HomeProps.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
+                            <Text>{this.props.data.data.owner}</Text>
+                        </TouchableOpacity>
+       
         <Text>{this.props.data.data.descripcion}</Text>
         {
         this.state.isLiked?

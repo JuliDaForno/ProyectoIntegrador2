@@ -9,7 +9,7 @@ class Login extends Component {
       <View>
         <FormLogin navigation={this.props.navigation} />
         <Text>
-          No tenes cuenta? R
+          No tenes cuenta? Registrate Aca
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Register')}
           >

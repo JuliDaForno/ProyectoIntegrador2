@@ -3,20 +3,20 @@ import React, { Component } from 'react'
 import { auth,db } from '../firebase/config'
 
 class ProfileData extends Component {
-    constuctor(props){
-        
+    constructor(props){
+        super(props)
         this.state={
-            userData:{},
+            userInfo:{},
             props: props,
             posteos:[]
         }
     }
 componentDidMount(){
-    db.collection(users).where('owner', '==', auth.currentUser.email).onSnapshot(
+    db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot(
         docs => {
 docs.forEach(doc=>{
     this.setState({
-        userData:doc.data()
+        userInfo:doc.data()
     })
 })
         }
@@ -47,13 +47,18 @@ logout(){
                 <TouchableOpacity
                 onPress= {() => this.logout()}
                 >
+                    <Text style ={style.info}>{this.state.userInfo.userName}</Text>
+                    {this.state.userInfo.bio != '' ? 
+                                <Text>{this.state.userInfo.bio}</Text>
+                            : null}
+                    <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style= {style.container}>
                         Cerrar sesion
                     </Text>
         <FlatList
         data={this.state.posteos}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item})=> <Text> {item.data.owner}</Text>} /> 
+        renderItem={({item})=>  <Home data={item} HomeProps={this.props}/>} /> 
                 </TouchableOpacity>
 
             </View>
@@ -64,6 +69,11 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'pink'
+    },
+    info:{
+        fontSize: 20,
+        fontWeight: '600',
+        color: 'pink'
     }
 })
 export default ProfileData
