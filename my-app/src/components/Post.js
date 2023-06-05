@@ -65,6 +65,7 @@ class Post extends Component {
         <Text>Post</Text>
 
         <Text>{this.props.data.data.descripcion}</Text>
+        {console.log(this.props.data.data)}
         {
           this.state.isLiked ?
           <TouchableOpacity
