@@ -95,7 +95,7 @@ class Post extends Component {
         }
         <View>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Comments')}
+            onPress={() => this.props.navigation.navigate('Comments', {id: this.props.data.id })}
           >
             <Text>
               Agregar comentario
