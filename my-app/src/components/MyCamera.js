@@ -64,7 +64,7 @@ class MyCamera extends Component {
                 ref={(metodosComponente) => this.metodosCamara = metodosComponente}
               />
               <TouchableOpacity
-                onPress={() => this.tomatFoto()}
+                onPress={() => this.tomarFoto()}
               >
                 <Text>
                   Tomar foto

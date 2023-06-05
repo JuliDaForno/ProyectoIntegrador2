@@ -49,7 +49,7 @@ class NewPost extends Component {
         {
           this.state.foto === '' ?
             <MyCamera
-              actualizarEstadoFoto={() => this.actualizarEstadoFoto(urlFoto)}
+              actualizarEstadoFoto={(urlFoto) => this.actualizarEstadoFoto(urlFoto)}
             />
             :
             <>
