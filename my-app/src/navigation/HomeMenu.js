@@ -5,9 +5,9 @@ import { AntDesign } from '@expo/vector-icons'
 
 
 import Home from '../screens/Home'
-import MyProfile from '../screens/MyProfile'
 import NewPost from '../screens/NewPost'
 import ProfileUsers from '../screens/ProfileUsers'
+import ProfileData from '../screens/ProfileData'
 
 const Tab = createBottomTabNavigator()
 
@@ -24,8 +24,8 @@ class HomeMenu extends Component {
                     }} />
 
                 <Tab.Screen
-                    name='MyProfile'
-                    component={MyProfile}
+                    name='ProfileData'
+                    component={ProfileData}
                     options={{
                         headerShown: false
                     }}
@@ -39,16 +39,6 @@ class HomeMenu extends Component {
                         tabBarIcon: () => <AntDesign name='pluscircleo' size={24} />
                     }}
                 />
-
-                <Tab.Screen
-                    name='ProfileUsers'
-                    component={ProfileUsers}
-                    options={{
-                        headerShown: false,
-                        tabBarIcon: () => <AntDesign name='profile' size={24} />
-                    }} />
-
-
 
             </Tab.Navigator>
         )
