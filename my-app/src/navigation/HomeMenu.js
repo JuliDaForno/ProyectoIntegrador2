@@ -27,7 +27,8 @@ class HomeMenu extends Component {
                     name='ProfileData'
                     component={ProfileData}
                     options={{
-                        headerShown: false
+                        headerShown: false,
+                        tabBarIcon: ()=>  <AntDesign name= 'user' size={24}/> 
                     }}
                 />
 
