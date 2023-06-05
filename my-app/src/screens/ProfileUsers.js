@@ -54,7 +54,7 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
   render() {
     console.log(this.state)
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.infoUser !== ''?
         <>
            
@@ -73,5 +73,11 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
     )
   }
 }
+const styles = StyleSheet.create({
+  container:{
+   backgroundColor: 'AAD4E8'
+  },
+ 
+})
 
 export default ProfileUsers

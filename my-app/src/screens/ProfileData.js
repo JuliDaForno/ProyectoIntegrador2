@@ -74,7 +74,7 @@ class ProfileData extends Component {
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#'
+        backgroundColor: 'lightblue'
     },
     info: {
         fontSize: 20,
