@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
@@ -32,7 +32,7 @@ export default class Home extends Component {
   
   render() {
     return (
-      <View>
+      <View style= {styles.container}>
         <Text>Home</Text>
        
         <Posteos
@@ -42,3 +42,9 @@ export default class Home extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1
+  }
+})

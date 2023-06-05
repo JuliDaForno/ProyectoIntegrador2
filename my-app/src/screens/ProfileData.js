@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth,db } from '../firebase/config'
-import Home from './Home'
+import Home from '../screens/Home'
 
 class ProfileData extends Component {
     constructor(props){
