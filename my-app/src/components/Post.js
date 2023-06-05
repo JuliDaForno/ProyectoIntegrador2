@@ -57,7 +57,7 @@ class Post extends Component {
 
   render() {
     return (
-      <View>
+      <View style = {styles.container}>
         <Image 
         source= {{uri: this.props.data.data.foto}}
         style= {styles.img}
@@ -88,12 +88,24 @@ class Post extends Component {
             />
           </TouchableOpacity>
         }
+        <View>
+          <TouchableOpacity
+          onPress= {()=> this.props.navigation.navigate('Comments')}
+          >
+            <Text>
+              Agregar comentario
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
 }
   
 const styles = StyleSheet.create({
+  container:{
+    marginVertical: 15
+  },
   img: {
     height: 200
   }
