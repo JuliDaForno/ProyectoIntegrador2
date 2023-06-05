@@ -45,7 +45,7 @@ class NewPost extends Component {
 
   render() {
     return (
-      <View styñe={styles.container} > 
+      <View style={styles.container} > 
         {
           this.state.foto === '' ?
             <MyCamera
