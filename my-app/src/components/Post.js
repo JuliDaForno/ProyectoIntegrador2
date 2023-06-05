@@ -56,8 +56,10 @@ class Post extends Component {
 
 
   render() {
+    console.log('props desde post')
+    console.log(this.props)
     return (
-      <View style = {styles.container}>
+      <View>
         <Image 
         source= {{uri: this.props.data.data.foto}}
         style= {styles.img}
