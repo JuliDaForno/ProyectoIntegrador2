@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import React, { Component } from 'react'
-import { db } from '../firebase/config'
+import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
 
 export default class Home extends Component {
@@ -13,7 +13,10 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    db.collection('posts').onSnapshot(docs => {
+    console.log(auth.currentUser.email)
+    db.collection('posts')
+    .where('owner', '==', auth.currentUser.email)
+    .onSnapshot(docs => {
       let arrDocs = []
 
       docs.forEach(doc => arrDocs.push({
