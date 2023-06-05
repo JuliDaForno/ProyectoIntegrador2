@@ -15,7 +15,6 @@ export default class Home extends Component {
   componentDidMount() {
     console.log(auth.currentUser.email)
     db.collection('posts')
-    .where('owner', '==', auth.currentUser.email)
     .onSnapshot(docs => {
       let arrDocs = []
 

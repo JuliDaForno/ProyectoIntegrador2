@@ -56,6 +56,7 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
     return (
       <View style={styles.container}>
         {this.state.infoUser !== ''?
+        
         <>
            
         <Text>{this.state.infoUser.data.owner}</Text>
