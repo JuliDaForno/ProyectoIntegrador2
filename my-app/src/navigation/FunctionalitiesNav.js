@@ -9,7 +9,7 @@ export default class FunctionalitiesNav extends Component {
         <Text>FunctionalitiesNav</Text>
         <StackNavigator>
             <Stack.Screen
-            name={ProfileUsers}
+            name="ProfileUsers"
             component={ProfileUsers}
             >
             </Stack.Screen>

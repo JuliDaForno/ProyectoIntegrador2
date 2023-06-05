@@ -37,6 +37,7 @@ export default class Home extends Component {
        
         <Posteos
             data={this.state.posts}
+            navigation={this.props.navigation}
         />
       </View>
     )
