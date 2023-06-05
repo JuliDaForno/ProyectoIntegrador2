@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import {FontAwesome} from '@expo/vector-icons'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
-import firebase from 'firebase'
+import firebase from 'firebase'  
 
 
 class Post extends Component {
@@ -59,8 +59,7 @@ class Post extends Component {
     return (
       <View>
         <Text>Post</Text>
-       
-       
+
         <Text>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
         {
