@@ -36,6 +36,7 @@ docs.forEach(doc=>{
         }
     )
 }
+
 logout(){
     auth.signOut()
     .then(resp => this.props.navigation.navigate('Login'))
