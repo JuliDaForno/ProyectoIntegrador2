@@ -8,7 +8,10 @@ class ProfileData extends Component {
         this.state={
             userInfo:{},
             props: props,
-            posteos:[]
+            posteos:[],
+            nombreDeUsuario:'',
+            bio: '',
+    
         }
     }
 componentDidMount(){
@@ -48,10 +51,11 @@ logout(){
                 <TouchableOpacity
                 onPress= {() => this.logout()}
                 >
-                    <Text style ={style.info}>{this.state.userInfo.userName}</Text>
-                    {this.state.userInfo.bio != '' ? 
-                                <Text>{this.state.userInfo.bio}</Text>
+                    <Text style ={style.info}>{this.state.owner}</Text>
+                    {this.state.bio != '' ? 
+                                <Text>{this.state.bio}</Text>
                             : null}
+                           {console.log(this.state.bio)}
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style= {style.container}>
                         Cerrar sesion
