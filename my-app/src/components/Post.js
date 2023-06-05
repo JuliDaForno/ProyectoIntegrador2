@@ -10,18 +10,19 @@ class Post extends Component {
     super(props)
         this.state={
             isLiked: false,
-            owner: false
+        
+           
         }
     }
-
-  componentDidMount(){
-    let estaMiLike = this.props.data.data.likes.includes(auth.currentUser.email)
-    if(estaMiLike === true){
-      this.setState({
-        isLiked: true
-      })
-    }
-  }
+    
+    componentDidMount(){
+        let estaMiLike = this.props.data.data.likes.includes(auth.currentUser.email)
+        if(estaMiLike ===true){
+            this.setState({
+                isLiked: true
+            })
+        }
+      }
 
 
   like(){
@@ -58,9 +59,7 @@ class Post extends Component {
     return (
       <View>
         <Text>Post</Text>
-        <TouchableOpacity onPress={() => this.props.HomeProps.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
-                            <Text>{this.props.data.data.owner}</Text>
-                        </TouchableOpacity>
+       
        
         <Text>{this.props.data.data.descripcion}</Text>
         {
@@ -87,7 +86,7 @@ class Post extends Component {
         }
       </View>
     )
-  }
-}
-
+  }}
+  
 export default Post
+
