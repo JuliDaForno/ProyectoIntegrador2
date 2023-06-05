@@ -10,12 +10,13 @@ class ProfileUsers extends Component {
   constructor(props){
     super(props)
     this.state={
-      infoUser: [],
+      infoUser: '',
         props: props,
         posteos:[]
     }
 }
 componentDidMount(){
+  console.log(this.props)
   db.collection('users')
   .where('owner', '==', this.state.props.route.params.email).onSnapshot(
     docs => {
@@ -25,6 +26,7 @@ componentDidMount(){
               id: doc.id,
               data: doc.data()
             })
+            console.log(arrUser);
             this.setState({
               infoUser: arrUser[0]
             })
@@ -50,13 +52,13 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
   
 
   render() {
-    
+    console.log(this.state)
     return (
       <View>
         {this.state.infoUser !== ''?
         <>
            
-        <Text>{this.state.data.data.owner}</Text>
+        <Text>{this.state.infoUser.data.owner}</Text>
 
         <Posteos
        data = {this.state.posteos}

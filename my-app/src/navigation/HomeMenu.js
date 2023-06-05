@@ -17,7 +17,7 @@ class HomeMenu extends Component {
             <Tab.Navigator>
                 <Tab.Screen
                     name='Home'
-                    component={Home}
+                    component={FunctionalitiesNav}
                     options={{
                         headerShown: false,
                         tabBarIcon: () => <AntDesign name='home' size={24} />
