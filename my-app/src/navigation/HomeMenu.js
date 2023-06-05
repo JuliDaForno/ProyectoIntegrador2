@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
 
-import FunctionalitiesNav from './FunctionalitiesNav'
+import FuncionalitiesNav from './FunctionalitiesNav'
 import Home from '../screens/Home'
 import NewPost from '../screens/NewPost'
 import ProfileUsers from '../screens/ProfileUsers'
