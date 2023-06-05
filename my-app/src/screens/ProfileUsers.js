@@ -3,24 +3,32 @@ import React, { Component } from 'react'
 import {auth, db} from '../firebase/config'
 import Home from './Home'
 import Post from '../components/Post'
+import Posteos from '../components/Posteos'
 
 
 class ProfileUsers extends Component {
   constructor(props){
     super(props)
     this.state={
-        userInfo:{},
+      infoUser: [],
         props: props,
         posteos:[]
     }
 }
 componentDidMount(){
-  db.collection('users').where('owner', '==', this.state.props.route.params.email).onSnapshot(
+  db.collection('users')
+  .where('owner', '==', this.state.props.route.params.email).onSnapshot(
     docs => {
+      let arrUser=[]
         docs.forEach(doc => {
-            this.setState({
-                userInfo: doc.data()
+            arrUser.push({
+              id: doc.id,
+              data: doc.data()
             })
+            this.setState({
+              infoUser: arrUser[0]
+            })
+            
         })
     })
 db.collection('posts').where('owner', '==', this.state.props.route.params.email).onSnapshot(
@@ -45,15 +53,24 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
     
     return (
       <View>
-        <TouchableOpacity
+        {this.state.unfoUser !== ''?
+        <>
+                <TouchableOpacity
         onPress={()=> this.props.navigation.navigate('HomeMenu')}
         ></TouchableOpacity>
-        <Text>ProfileEdit</Text>
+        <Text>{this.state.data.data.owner}</Text>
         <FlatList
         data={this.state.posteos}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item})=> <Home data= {item}/>} /> 
+        renderItem={({item})=> <Home data= {item}/>} /> </>
+:
+      null
+      }
+       <Posteos
+       data = {this.state.posteos}
+       navigation = {this.props.navigation}/> 
       </View>
+
     )
   }
 }

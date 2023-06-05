@@ -58,6 +58,10 @@ class Post extends Component {
   render() {
     return (
       <View>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('ProfileUsers', {email:this.props.data.data.owner})}>
+            <Text>{this.props.data.data.owner}</Text>
+        </TouchableOpacity>
+        
         <Image 
         source= {{uri: this.props.data.data.foto}}
         style= {styles.img}
