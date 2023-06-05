@@ -10,6 +10,7 @@ class Post extends Component {
     super(props)
         this.state={
             isLiked: false,
+            owner: false
         
            
         }
@@ -22,17 +23,7 @@ class Post extends Component {
                 isLiked: true
             })
         }
-      
-
-  componentDidMount(){
-    let estaMiLike = this.props.data.data.likes.includes(auth.currentUser.email)
-    if(estaMiLike === true){
-      this.setState({
-        isLiked: true
-      })
     }
-  }
-
 
   like(){
     db.collection('posts')
@@ -95,6 +86,7 @@ class Post extends Component {
         }
       </View>
     )
-  }}
+  }
+}
   export default Post
 
