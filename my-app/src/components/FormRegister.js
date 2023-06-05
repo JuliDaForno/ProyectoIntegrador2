@@ -22,6 +22,7 @@ class FormRegister extends Component {
                 db.collection('users').add({
                     owner: auth.currentUser.email,
                     createdAt: Date.now()
+                    
                 })
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
