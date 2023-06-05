@@ -7,26 +7,30 @@ class FormRegister extends Component {
         super(props)
         this.state = {
             inputMail: '', 
-            inputPassword: ''
+            inputPassword: '',
+            nombreDeUsuario:'',
+            bio:'',
+            FotoPerfil:'',
         }
     }
-
-    registrarUsuario(mail, password){ 
-        auth.createUserWithEmailAndPassword(mail, password)
-        .then (data =>{
-            console.log('Entramos a la promesa del create')
-            this.props.navigation.navigate('HomeMenu')
-
-            db.collection('users').add({
-                owner: auth.currentUser.email,
-                createdAt: Date.now()
+        registrarUsuario(mail, password){ 
+            auth.createUserWithEmailAndPassword(mail, password)
+            .then (data =>{
+                console.log('Entramos a la promesa del create')
+                this.props.navigation.navigate('HomeMenu')
+    
+                db.collection('users').add({
+                    owner: auth.currentUser.email,
+                    createdAt: Date.now()
+                })
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+            
             })
-            .then(res => console.log(res))
             .catch(err => console.log(err))
-        
-        })
-        .catch(err => console.log(err))
-    }
+        }
+
+   
   render() {
     return (
       <View>
@@ -45,9 +49,31 @@ class FormRegister extends Component {
         value = {this.state.inputPassword}
         secureTextEntry= {true}
         />
+        <TextInput
+        style = {styles.input}
+        placeholder= 'Cree su nombre de usuario'
+        keyboardType="default"
+        onChangeText={(text) => this.setState({nombreDeUsuario:text})}
+        value={this.state.nombreDeUsuario}
+        />
+        <TextInput
+        style = {styles.input}
+        placeholder= 'Escriba una bio'
+        keyboardType="default"
+        onChangeText={(text) => this.setState({bio:text})}
+        value={this.state.bio}
+        />
+
+        { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario ?
         <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}>
-           <Text style = {styles.btnText}> Registrarme</Text> 
+        <Text style = {styles.btnText}> Registrarme</Text> 
         </TouchableOpacity>
+     :
+            <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario deben ser obligatorios</Text>
+            
+        }
+
+
         
       </View>
     )
@@ -65,12 +91,15 @@ const styles = StyleSheet.create({
     },
     btn:{
         marginTop:32,
-        backgroundColor: '#54d0e0',
+        backgroundColor: '#5995eb',
         padding: 10,
         borderRadius:20,
     },
     btnText:{
         textAlign:'center',
         fontWeight:'bold'
+    },
+    alert:{
+        color: 'red'
     }
 })
