@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth,db } from '../firebase/config'
-
+import Home from './Home'
 class ProfileData extends Component {
     constructor(props){
         super(props)
@@ -73,7 +73,7 @@ logout(){
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'pink'
+        backgroundColor: '#'
     },
     info:{
         fontSize: 20,
