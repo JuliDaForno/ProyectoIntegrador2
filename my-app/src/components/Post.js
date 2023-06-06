@@ -10,8 +10,9 @@ class Post extends Component {
     super(props)
     this.state = {
       isLiked: false,
-      owner: false
-
+      owner: false,
+      mostrarCamara: false,
+      fotoTomada: ''
 
     }
   }
@@ -51,6 +52,12 @@ class Post extends Component {
       .catch(err => console.log(err))
 
 
+  }
+  rechazarFoto() {
+    this.setState({
+      mostrarCamara: true,
+      fotoTomada: ''
+    })
   }
 
   render() {
@@ -101,6 +108,13 @@ class Post extends Component {
               Agregar comentario
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity
+                    onPress={() => this.rechazarFoto()}
+                  >
+                    <Text>
+                      Eliminar Foto
+                    </Text>
+                  </TouchableOpacity>
         </View>
       </View>
     )

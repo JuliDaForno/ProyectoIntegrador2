@@ -12,6 +12,7 @@ class ProfileData extends Component {
             posteos: [],
             nombreDeUsuario: '',
             bio: '',
+        
 
         }
     }
@@ -46,6 +47,7 @@ class ProfileData extends Component {
             .then(resp => this.props.navigation.navigate('Login'))
             .catch(err => console.log(err))
     }
+   
     render() {
         return (
             <View style={style.container}>
@@ -61,12 +63,14 @@ class ProfileData extends Component {
                     <Text style={style.container}>
                         Cerrar sesion
                     </Text>
+
+                    
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <Home data={item} />} />
                 </TouchableOpacity>
-
+                
             </View>
         )
     }
