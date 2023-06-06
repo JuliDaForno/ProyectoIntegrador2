@@ -76,7 +76,8 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
 }
 const styles = StyleSheet.create({
   container:{
-   backgroundColor: 'AAD4E8'
+   backgroundColor: 'AAD4E8',
+   flex:1
   },
  
 })

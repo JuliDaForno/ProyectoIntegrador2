@@ -10,8 +10,8 @@ class Post extends Component {
     super(props)
     this.state = {
       isLiked: false,
-      owner: false
-
+      owner: false,
+     
 
     }
   }
@@ -52,12 +52,24 @@ class Post extends Component {
 
 
   }
+  deletePost(){
+    db.collection("posts")
+    .doc(this.props.data.id)
+    .delete()
+    .then(() => {
+        console.log('Post eliminado');
+    }).catch((e) => {
+        console.log(e);
+    });
+}
+
 
   render() {
     console.log('props desde post')
     console.log(this.props)
     return (
       <View style={styles.container}>
+        
         <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
           <Text>{this.props.data.data.owner}</Text>
         </TouchableOpacity>
@@ -71,6 +83,7 @@ class Post extends Component {
 
         <Text>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
+       
         {
           this.state.isLiked ?
             <TouchableOpacity
@@ -82,7 +95,9 @@ class Post extends Component {
                 color='red'
               />
             </TouchableOpacity>
+            
             :
+
             <TouchableOpacity
               onPress={() => this.like()}
             >
@@ -101,7 +116,11 @@ class Post extends Component {
               Agregar comentario
             </Text>
           </TouchableOpacity>
+          
         </View>
+        <TouchableOpacity onPress={() => this.deletePost()}>
+                                <FontAwesome name="trash-o" size={24} color="black" />
+                            </TouchableOpacity>
       </View>
     )
   }
