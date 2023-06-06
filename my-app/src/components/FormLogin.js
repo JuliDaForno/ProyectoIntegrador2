@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     body:{
-        backgroundColor: 'pink',
+        backgroundColor: 'AAD4E8',
     }
 })
 export default FormLogin
