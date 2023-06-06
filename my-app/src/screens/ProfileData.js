@@ -1,6 +1,7 @@
 import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 import React, { Component } from 'react'
-import { auth,db } from '../firebase/config'
+import { auth, db } from '../firebase/config'
+import { AntDesign } from '@expo/vector-icons';
 import Home from './Home'
 
 class ProfileData extends Component {
@@ -12,7 +13,7 @@ class ProfileData extends Component {
             posteos: [],
             nombreDeUsuario: '',
             bio: '',
-        
+
 
         }
     }
@@ -47,43 +48,55 @@ class ProfileData extends Component {
             .then(resp => this.props.navigation.navigate('Login'))
             .catch(err => console.log(err))
     }
-   
+
     render() {
         return (
-            <View style={style.container}>
+            <View style={styles.container}>
+                <TouchableOpacity
+                    style={styles.arrow}
+                    onPress={() => this.props.navigation.navigate('Home')}
+                >
+                    <Text>
+                        <AntDesign name='arrowleft' size={24} color='black' />
+                        HOME
+                    </Text>
+                </TouchableOpacity>
+                
                 <TouchableOpacity
                     onPress={() => this.logout()}
                 >
-                    <Text style={style.info}>{this.state.owner}</Text>
+                    <Text style={styles.info}>{this.state.owner}</Text>
                     {this.state.bio != '' ?
                         <Text>{this.state.bio}</Text>
                         : null}
                     {console.log(this.state.bio)}
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    <Text style={style.container}>
+                    <Text style={styles.container}>
                         Cerrar sesion
                     </Text>
 
-                    
+
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <Home data={item} />} />
                 </TouchableOpacity>
-                
+
             </View>
         )
     }
 }
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightblue'
     },
     info: {
         fontSize: 20,
         fontWeight: '600',
         color: 'pink'
+    },
+    arrow: {
+        alignItems: 'start'
     }
 })
 export default ProfileData
