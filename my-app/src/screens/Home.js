@@ -7,15 +7,13 @@ export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      posteos: [],
+      posts: [],
     
     }
   }
 
   componentDidMount() {
-    console.log(auth.currentUser.email)
     db.collection('posts')
-    .where('owner', '==', auth.currentUser.email)
     .onSnapshot(docs => {
       let arrDocs = []
 
