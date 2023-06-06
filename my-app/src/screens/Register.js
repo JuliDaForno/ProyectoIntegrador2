@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import FormRegister from '../components/FormRegister'
 import { auth } from '../firebase/config'
@@ -17,12 +17,16 @@ class Register extends Component {
 
   render() {
     return (
-      <View>
+      <View >
         <FormRegister navigation={this.props.navigation} />
-        <Text>Ya tenes una cuenta</Text>
+        <View style ={styles.container1}>
+        <Text style={styles.boton}>Ya tenes una cuenta    <br></br></Text>
+   
         <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}
-        > <Text>Ingresa aquí!</Text>
+        > <Text style ={styles.boton}>Ingresa aquí!</Text>
+
         </TouchableOpacity>
+        </View>
 
         <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeMenu')}
         >
@@ -33,4 +37,14 @@ class Register extends Component {
     )
   }
 }
+const styles = StyleSheet.create({
+container1:{
+  flexDirection: 'row',
+  marginTop: 32,
+  backgroundColor: 'pink',
+  padding: 10,
+  borderRadius: 20,
+  justifyContent: 'center',
+}}
+  )
 export default Register

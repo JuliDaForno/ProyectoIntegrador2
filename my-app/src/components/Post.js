@@ -54,8 +54,11 @@ class Post extends Component {
   }
   deletePost(){
     db.collection("posts")
+   
     .doc(this.props.data.id)
-    .delete()
+    
+    .delete({
+    })
     .then(() => {
         console.log('Post eliminado');
     }).catch((e) => {
@@ -128,7 +131,8 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 15
+    marginVertical: 15,
+    flex: 1
   },
   img: {
     height: 200
