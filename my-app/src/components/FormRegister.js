@@ -34,8 +34,8 @@ class FormRegister extends Component {
    
   render() {
     return (
-      <View>
-        <Text>Registrate!!</Text>
+      <View style ={styles.body}>
+        <Text style= {styles.body}>Registrate!!</Text>
         <TextInput
         style = {styles.input}
         placeholder= 'Digite su email'
@@ -85,22 +85,33 @@ export default FormRegister
 const styles = StyleSheet.create({
     input:{
         borderWidth:1,
-        borderColor: '#3d3d3d',
+        borderColor: 'pink',
         marginTop: 24,
         height:24,
-        padding:5
+        padding:5,
+        color: 'white'
+    },
+    body:{
+        backgroundColor: 'black',
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold',
+       
     },
     btn:{
         marginTop:32,
-        backgroundColor: '#5995eb',
+        backgroundColor: 'black',
         padding: 10,
         borderRadius:20,
+        color: 'white'
     },
     btnText:{
         textAlign:'center',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'white'
     },
     alert:{
-        color: 'red'
+        color: 'pink',
+        fontWeight: 'bold',
     }
 })

@@ -53,14 +53,17 @@ class FormLogin extends Component {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        margin: 16
+        margin: 16,
+       
     },
     input: {
         borderWidth: 1,
-        borderColor: '#3d3d3d',
+        borderColor: 'pink',
         marginTop: 24,
         height: 24,
-        padding: 5
+        padding: 5,
+        color:'white'
+         
     },
     boton: {
         marginTop: 32,
@@ -70,10 +73,12 @@ const styles = StyleSheet.create({
     },
     btnText: {
         textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     },
     body:{
-        backgroundColor: 'pink',
+        backgroundColor: 'black',
+        color:'white'
     }
 })
 export default FormLogin

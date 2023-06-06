@@ -10,12 +10,13 @@ class ProfileUsers extends Component {
   constructor(props){
     super(props)
     this.state={
-      infoUser: [],
+      infoUser: '',
         props: props,
         posteos:[]
     }
 }
 componentDidMount(){
+  console.log(this.props)
   db.collection('users')
   .where('owner', '==', this.state.props.route.params.email).onSnapshot(
     docs => {
@@ -25,6 +26,7 @@ componentDidMount(){
               id: doc.id,
               data: doc.data()
             })
+            console.log(arrUser);
             this.setState({
               infoUser: arrUser[0]
             })
@@ -50,29 +52,34 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
   
 
   render() {
-    
+    console.log(this.state)
     return (
-      <View>
-        {this.state.unfoUser !== ''?
+      <View style={styles.container}>
+        {this.state.infoUser !== ''?
+        
         <>
-                <TouchableOpacity
-        onPress={()=> this.props.navigation.navigate('HomeMenu')}
-        ></TouchableOpacity>
-        <Text>{this.state.data.data.owner}</Text>
-        <FlatList
-        data={this.state.posteos}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({item})=> <Home data= {item}/>} /> </>
+           
+        <Text>{this.state.infoUser.data.owner}</Text>
+
+        <Posteos
+       data = {this.state.posteos}
+       navigation = {this.props.navigation}/> 
+         </>
 :
       null
       }
-       <Posteos
-       data = {this.state.posteos}
-       navigation = {this.props.navigation}/> 
+       
       </View>
 
     )
   }
 }
+const styles = StyleSheet.create({
+  container:{
+   backgroundColor: 'AAD4E8',
+   flex:1
+  },
+ 
+})
 
 export default ProfileUsers

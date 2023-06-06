@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
 
-
+import FunctionalitiesNav from './FunctionalitiesNav'
 import Home from '../screens/Home'
 import NewPost from '../screens/NewPost'
 import ProfileUsers from '../screens/ProfileUsers'
@@ -17,17 +17,18 @@ class HomeMenu extends Component {
             <Tab.Navigator>
                 <Tab.Screen
                     name='Home'
-                    component={Home}
+                    component={FunctionalitiesNav}
                     options={{
                         headerShown: false,
                         tabBarIcon: () => <AntDesign name='home' size={24} />
                     }} />
-
+                       
                 <Tab.Screen
                     name='ProfileData'
                     component={ProfileData}
                     options={{
-                        headerShown: false
+                        headerShown: false,
+                        tabBarIcon: ()=>  <AntDesign name= 'user' size={24}/> 
                     }}
                 />
 
