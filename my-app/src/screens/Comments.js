@@ -25,8 +25,18 @@ class Comments extends Component {
   render() {
 
     return (
-      <View>
-        <Text>Aqui vamos a cargar todos los comentarios del posteo</Text>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.arrow}
+          onPress={() => this.props.navigation.navigate('Home')}
+        >
+          <Text>
+            <AntDesign name='arrowleft' size={24} color='black' />
+            HOME
+          </Text>
+        </TouchableOpacity>
+        
+
         <FlatList
           style={styles.comentarios}
           data={this.state.data.comments}
@@ -35,14 +45,7 @@ class Comments extends Component {
         />
         <FormComments idPost={this.props.route.params.id} />
 
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => this.props.navigation.navigate('HomeMenu')}
-        >
-          <Text style={styles.btnText}>Volver al feed
-          <AntDesign name='arrowleft' size={24} color='black' />
-          </Text>
-        </TouchableOpacity>
+
       </View>
     )
   }
@@ -54,18 +57,29 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 10,
   },
-  btnText:{
-    textAlign:'center',
-    fontWeight:'bold',
-    color:'white'
-},
-btn:{
-  marginTop:32,
-  backgroundColor: '#54d0e0',
-  padding: 10,
-  borderRadius:20,
-  marginHorizontal: 10, 
-  paddingVertical: 10, 
+  btnText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  btn: {
+    marginTop: 32,
+    backgroundColor: '#54d0e0',
+    padding: 10,
+    borderRadius: 20,
+    marginHorizontal: 10,
+    paddingVertical: 10,
+  },
+  arrow: {
+    alignItems: 'start'
+  },    
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    color: 'rgb(255,255,255)',
+    padding: 15,
+    justifyContent: 'center',
+    textAlign: 'center',
 }
 })
 
