@@ -1,4 +1,4 @@
-import { Text, View, FlatList } from 'react-native'
+import { Text, View, FlatList, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import FormComments from '../components/FormComments'
 import { db } from '../firebase/config'

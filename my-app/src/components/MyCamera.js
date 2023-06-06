@@ -80,7 +80,6 @@ class MyCamera extends Component {
                 />
                 <View>
                   <TouchableOpacity
-                    styles={styles.buttonGuardar}
                     onPress={() => this.aceptarFoto()}
                   >
                     <Text>
@@ -88,7 +87,6 @@ class MyCamera extends Component {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    styles={styles.buttonGuardar}
                     onPress={() => this.rechazarFoto()}
                   >
                     <Text>
@@ -107,31 +105,15 @@ class MyCamera extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: 250,
-    width: '80%',
-    marginBottom: '4%',
-    gap: 10
+    flex: 1
   },
   camara: {
     flex: 1
   },
   img: {
     flex: 1
-  },
-  buttonGuardar: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    padding: 3,
-    backgroundColor: 'red',
-    width: 100,
-    height: 30
   }
+
 })
 
 export default MyCamera
