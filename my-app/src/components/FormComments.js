@@ -25,7 +25,7 @@ export default class FormComments extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
         keyboardType='default'
         style={styles.input}
@@ -46,7 +46,20 @@ export default class FormComments extends Component {
 
 const styles = StyleSheet.create({
     input:{
+        color: 'rgb(0,0,0)',
+        borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'red'
+        borderColor: 'rgb(0,0,0)',
+        backgroundColor: 'rgb(255,255,255)',
+        padding: 10,
+        margin: 10
+    },
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+        color: 'rgb(255,255,255)',
+        padding: 15,
+        justifyContent: 'center',
+        textAlign: 'center',
     }
 })

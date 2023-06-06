@@ -55,63 +55,82 @@ class MyCamera extends Component {
 
   render() {
     return (
-    <View style={styles.container}>
+      <View style={styles.container}>
         {
-            this.state.mostrarCamara && this.state.fotoTomada === '' ?
+          this.state.mostrarCamara && this.state.fotoTomada === '' ?
             <>
-                <Camera
+              <Camera
                 style={styles.camara}
                 type={Camera.Constants.Type.back}
                 ref={(metodosComponente) => this.metodosCamara = metodosComponente}
-                /> 
-                <TouchableOpacity
-                onPress={()=> this.tomarFoto()}
-                >
-                    <Text>
-                        Tomar foto
-                    </Text>
-                </TouchableOpacity>
+              />
+              <TouchableOpacity
+                onPress={() => this.tomarFoto()}
+              >
+                <Text>
+                  Tomar foto
+                </Text>
+              </TouchableOpacity>
             </>
             : this.state.mostrarCamara === false && this.state.fotoTomada !== '' ?
-            <>
+              <>
                 <Image
-                    source={{uri: this.state.fotoTomada}}
-                    style={styles.img}
+                  source={{ uri: this.state.fotoTomada }}
+                  style={styles.img}
                 />
                 <View>
-                    <TouchableOpacity
-                    onPress={()=> this.aceptarFoto()}
-                    >
-                        <Text>
-                            Aceptar foto
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                    onPress={()=> this.rechazarFoto()}
-                    >
-                        <Text>
-                            Rechazar foto
-                        </Text>
-                    </TouchableOpacity>
+                  <TouchableOpacity
+                    styles={styles.buttonGuardar}
+                    onPress={() => this.aceptarFoto()}
+                  >
+                    <Text>
+                      Aceptar foto
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    styles={styles.buttonGuardar}
+                    onPress={() => this.rechazarFoto()}
+                  >
+                    <Text>
+                      Rechazar foto
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-            </>
-            :
-            <Text>No tienes permisos para usar la Camara</Text>
+              </>
+              :
+              <Text>No tienes permisos para usar la Camara</Text>
         }
-    </View>
+      </View>
     )
-}
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: 250,
+    width: '80%',
+    marginBottom: '4%',
+    gap: 10
   },
   camara: {
     flex: 1
   },
   img: {
     flex: 1
+  },
+  buttonGuardar: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    padding: 3,
+    backgroundColor: 'red',
+    width: 100,
+    height: 30
   }
 })
 

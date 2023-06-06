@@ -27,6 +27,7 @@ class Comments extends Component {
       <View>
         <Text>Aqui vamos a cargar todos los comentarios del posteo</Text>
        <FlatList
+        style = {styles.comentarios}
         data={this.state.data.comments}
         keyExtractor={item => item.createdAt.toString}
         renderItem={({item})=> <Text>{item.comentario}</Text>}
@@ -36,5 +37,13 @@ class Comments extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  comentarios: {
+    padding: 10,
+    flexDirection: 'column',
+    flex: 10,
+}
+})
 
 export default Comments
