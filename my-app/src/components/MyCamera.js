@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
-import { Camera } from 'expo-camera'
+import { Camera, CameraType } from 'expo-camera'
 import { storage } from '../firebase/config'
 
 
@@ -61,7 +61,7 @@ class MyCamera extends Component {
             <>
               <Camera
                 style={styles.camara}
-                type={Camera.Constants.Type.back}
+                type={CameraType.front}
                 ref={(metodosComponente) => this.metodosCamara = metodosComponente}
               />
               <TouchableOpacity
