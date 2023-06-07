@@ -17,7 +17,7 @@ class HomeMenu extends Component {
         return (
             <Tab.Navigator>
                 <Tab.Screen
-                    name='Home'
+                    name='FunctionalitiesNav'
                     component={FunctionalitiesNav}
                     options={{
                         headerShown: false,

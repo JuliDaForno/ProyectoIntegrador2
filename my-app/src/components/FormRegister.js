@@ -1,7 +1,7 @@
 import { Text, View, TextInput, TouchableOpacity, StyleSheet} from "react-native";
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
-import ImagenPerfil from "./ImagePerfil";
+//import ImagenPerfil from "./ImagePerfil";
 
 class FormRegister extends Component {
     constructor(props){
