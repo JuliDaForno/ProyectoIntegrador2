@@ -35,6 +35,7 @@ class FunctionalitiesNav extends Component {
           headerShown: false
         }}
         />
+        
       </Stack.Navigator>
     )
   }

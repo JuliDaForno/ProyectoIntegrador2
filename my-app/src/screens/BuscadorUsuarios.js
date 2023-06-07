@@ -1,11 +1,11 @@
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
 import React, { Component } from 'react'
-import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
 import BuscadorFiltrado from '../components/BuscadorFiltrado'
 
-export default class Home extends Component {
-  constructor(props) {
+export default class BuscadorUsuarios extends Component {
+
+constructor(props) {
     super(props)
     this.state = {
       posts: [],
@@ -39,8 +39,8 @@ export default class Home extends Component {
   render() {
     return (
       <View style= {styles.container}>
+        <Text>Buscador de perfiles</Text>
         <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup}/>
-        <Text>Home</Text>
        
         <Posteos
             data={this.state.posts}
@@ -50,9 +50,3 @@ export default class Home extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1
-  }
-})
