@@ -35,12 +35,14 @@ constructor(props) {
       })
     })
   }
-  
+  filtrarPosteo(user){
+
+  }
   render() {
     return (
       <View>
         <Text>Buscador de perfiles</Text>
-        <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup}/>
+        <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup} filtrador= {(user) =>this.state.filtrarPosteo(user)}/>
        
         <Posteos
             data={this.state.posts}

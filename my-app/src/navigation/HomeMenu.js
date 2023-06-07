@@ -9,6 +9,7 @@ import NewPost from '../screens/NewPost'
 import ProfileUsers from '../screens/ProfileUsers'
 import ProfileData from '../screens/ProfileData'
 import BuscadorUsuarios from '../screens/BuscadorUsuarios'
+import Buscador from '../screens/Buscador'
 
 const Tab = createBottomTabNavigator()
 
@@ -43,7 +44,7 @@ class HomeMenu extends Component {
                 />
                 <Tab.Screen
                     name='Buscador'
-                    component={BuscadorUsuarios}
+                    component={Buscador}
                     options={{
                         headerShown: false,
                         tabBarIcon: ()=>  <AntDesign name= '"md-person-circle-outline"' size={24}/> 

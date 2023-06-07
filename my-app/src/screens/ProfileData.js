@@ -8,7 +8,7 @@ class ProfileData extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userInfo: {},
+            userInfo: [],
             props: props,
             posteos: [],
             nombreDeUsuario: '',
@@ -18,15 +18,21 @@ class ProfileData extends Component {
         }
     }
     componentDidMount() {
-        db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot(
-            docs => {
-                docs.forEach(doc => {
-                    this.setState({
-                        userInfo: doc.data()
-                    })
+        db.collection("users").where("owner", "==", auth.currentUser.email).onSnapshot(
+            (docs) => {
+
+            let usuarios = []
+            docs.forEach((doc) => {
+                usuarios.push({
+                    
+                    data: doc.data()
                 })
-            }
-        )
+            })
+            this.setState({
+                userInfo: usuarios,
+               
+            })
+        })
         db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
             docs => {
                 let posts = [];
@@ -50,6 +56,7 @@ class ProfileData extends Component {
     }
 
     render() {
+       console.log(this.state);
         return (
             <View style={styles.container}>
                 <TouchableOpacity
@@ -66,10 +73,10 @@ class ProfileData extends Component {
                     onPress={() => this.logout()}
                 >
                     <Text style={styles.info}>{this.state.owner}</Text>
-                    {this.state.bio != '' ?
-                        <Text>{this.state.bio}</Text>
+                    {this.state.userInfo[0]?.data.bio != '' ?
+                        <Text>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
-                    {console.log(this.state.bio)}
+                    
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style={styles.container}>
                         Cerrar sesion

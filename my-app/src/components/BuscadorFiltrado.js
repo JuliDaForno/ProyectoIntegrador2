@@ -30,6 +30,7 @@ class BuscadorFiltrado extends Component{
 
     metodoQueEnvia(){
         console.log('Enviamos la info');
+        
     }
     render(){
         return(
