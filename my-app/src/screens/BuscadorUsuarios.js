@@ -1,10 +1,10 @@
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
+import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
 import BuscadorFiltrado from '../components/BuscadorFiltrado'
 
-export default class BuscadorUsuarios extends Component {
-
+class BuscadorUsuarios extends Component {
 constructor(props) {
     super(props)
     this.state = {
@@ -38,7 +38,7 @@ constructor(props) {
   
   render() {
     return (
-      <View style= {styles.container}>
+      <View>
         <Text>Buscador de perfiles</Text>
         <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup}/>
        
@@ -50,3 +50,4 @@ constructor(props) {
     )
   }
 }
+export default BuscadorUsuarios

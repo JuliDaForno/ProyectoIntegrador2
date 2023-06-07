@@ -9,7 +9,6 @@ export default class Home extends Component {
     super(props)
     this.state = {
       posts: [],
-      postBackup: [] 
     
     }
   }
@@ -31,7 +30,7 @@ export default class Home extends Component {
 
       this.setState({
         posts: arrDocs,
-        postBackup: arrDocs
+
       })
     })
   }
@@ -39,7 +38,6 @@ export default class Home extends Component {
   render() {
     return (
       <View style= {styles.container}>
-        <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup}/>
         <Text>Home</Text>
        
         <Posteos
