@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+//import * as ImagePicker from 'expo-image-picker';
 import FormRegister from './FormRegister';
 
 export default function ImagenPerfil() {
