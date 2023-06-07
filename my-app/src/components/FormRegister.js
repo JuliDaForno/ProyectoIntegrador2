@@ -1,6 +1,7 @@
 import { Text, View, TextInput, TouchableOpacity, StyleSheet} from "react-native";
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
+import ImagenPerfil from "./ImagePerfil";
 
 class FormRegister extends Component {
     constructor(props){
@@ -67,6 +68,7 @@ class FormRegister extends Component {
         onChangeText={(text) => this.setState({bio:text})}
         value={this.state.bio}
         />
+        <ImagenPerfil />
 
         { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario ?
         <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario) }>
