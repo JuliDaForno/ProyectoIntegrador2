@@ -13,7 +13,7 @@ class FormRegister extends Component {
             FotoPerfil:'',
         }
     }
-        registrarUsuario(mail, password){ 
+        registrarUsuario(mail, password, bio, FotoPerfil, nombreDeUsuario){ 
             auth.createUserWithEmailAndPassword(mail, password)
             .then (data =>{
                 console.log('Entramos a la promesa del create')
@@ -21,7 +21,10 @@ class FormRegister extends Component {
     
                 db.collection('users').add({
                     owner: auth.currentUser.email,
-                    createdAt: Date.now()
+                    createdAt: Date.now(),
+                    bio: bio,
+                    fotoPerfil: FotoPerfil,
+                    nombreDeUsuario: nombreDeUsuario,
                     
                 })
                 .then(res => console.log(res))
@@ -66,7 +69,7 @@ class FormRegister extends Component {
         />
 
         { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario ?
-        <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}>
+        <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario) }>
         <Text style = {styles.btnText}> Registrarme</Text> 
         </TouchableOpacity>
      :
