@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
 import BuscadorFiltrado from '../components/BuscadorFiltrado'
-
+import Home from './Home'
 class BuscadorUsuarios extends Component {
 constructor(props) {
     super(props)
@@ -44,7 +44,7 @@ constructor(props) {
         <Text>Buscador de perfiles</Text>
         <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup} filtrador= {(user) =>this.state.filtrarPosteo(user)}/>
        
-        <Posteos
+        <Home
             data={this.state.posts}
             navigation= {this.props.navigation}
         />

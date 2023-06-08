@@ -13,8 +13,15 @@ class BuscadorFiltrado extends Component{
         event.preventDefault()
     }
     metodoQueFiltra(texto,arrayFuente){
-        let filtrado = arrayFuente.filter((element) => element.data.owner.toLowerCase().includes(texto.toLowerCase()))// pasa por todos los elemntos y valida lo que le pidamos
+
+        let filtrado = arrayFuente.filter((element) => 
+        {
+        return(
+            element.data.email && element.data.email.toLowerCase().includes(texto.toLowerCase()) || 
+        element.data.nombreDeUsuario && element.data.nombreDeUsuario.toLowerCase().includes(texto.toLowerCase()) )
+        })
         return filtrado
+
     }
 
     guardarValor(event){
