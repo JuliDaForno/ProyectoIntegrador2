@@ -59,7 +59,7 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
         
         <>
            
-        <Text>{this.state.infoUser.data.owner}</Text>
+        <Text >{this.state.infoUser.data.owner}</Text>
 
         <Posteos
        data = {this.state.posteos}
@@ -79,6 +79,9 @@ const styles = StyleSheet.create({
    backgroundColor: 'AAD4E8',
    flex:1
   },
+  info:{
+    color: 'white'
+  }
  
 })
 

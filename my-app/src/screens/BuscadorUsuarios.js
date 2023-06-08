@@ -45,8 +45,8 @@ class BuscadorUsuarios extends Component {
   filtrarPosteo(user) {}
   render() {
     return (
-      <View>
-        <Text>Buscador de perfiles</Text>
+      <View style ={styles.rosa}>
+        <Text style ={styles.verde}>Buscador de perfiles</Text>
         <BuscadorFiltrado
           actualizador={(data) => this.actualizadorDeEstado(data)}
           fuente={this.state.postBackup}
@@ -85,7 +85,14 @@ const styles = StyleSheet.create({
     borderRadius: "10px",
     margin: "10px",
     textAlign: "center",
+
   },
+  rosa:{
+    backgroundColor:'black'
+  },
+  verde:{
+    color:'white'
+  }
 });
 
 export default BuscadorUsuarios;

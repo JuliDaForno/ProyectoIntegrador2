@@ -79,23 +79,27 @@ class Post extends Component {
     console.log(this.props);
     return (
       <View style={styles.container}>
-        <View> 
+        <View   > 
           {this.state.owner ? <TouchableOpacity
+          
           onPress={() =>
+            
             this.props.navigation.navigate("ProfileData", {
+              
               email: this.props.data.data.owner,
             })
           }
         >
-          <Text>{this.props.data.data.owner}</Text>
+          <Text >{this.props.data.data.owner}</Text>
         </TouchableOpacity> : <TouchableOpacity
+       
           onPress={() =>
             this.props.navigation.navigate("ProfileUsers", {
               email: this.props.data.data.owner,
             })
           }
         >
-          <Text>{this.props.data.data.owner}</Text>
+          <Text style ={styles.info}>{this.props.data.data.owner}</Text>
         </TouchableOpacity>}
         </View>
 
@@ -103,7 +107,7 @@ class Post extends Component {
 
         <Text>Post</Text>
 
-        <Text>{this.props.data.data.descripcion}</Text>
+        <Text  style={styles.container}>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
 
         {this.state.isLiked ? (
@@ -115,7 +119,7 @@ class Post extends Component {
             <FontAwesome name="heart-o" size={24} color="red" />
           </TouchableOpacity>
         )}
-        <View>
+        <View >
           <TouchableOpacity
             onPress={() =>
               this.props.navigation.navigate("Comments", {
@@ -123,13 +127,13 @@ class Post extends Component {
               })
             }
           >
-            <Text>Agregar comentario</Text>
+            <Text style={styles.container}>Agregar comentario</Text>
           </TouchableOpacity>
         </View>
         {console.log(this.state.owner, 'quien')}
         {this.state.owner ? (
           <TouchableOpacity onPress={() => this.deletePost()}>
-            <FontAwesome name="trash-o" size={24} color="black" />
+            <FontAwesome name="trash-o" size={24} color="red" />
           </TouchableOpacity>
         ) : null}
       </View>
@@ -141,11 +145,20 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
     flex: 1,
-    width: 300
+    width: 300,
+    color: 'white',
+    backgroundColor: 'black'
+    
+    
   },
   img: {
     height: 200,
   },
+  info:{
+    color: 'white'
+  }
+  
+  
 });
 
 export default Post;

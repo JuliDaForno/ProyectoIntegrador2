@@ -62,16 +62,17 @@ class ProfileData extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity
-                    style={styles.arrow}
+                  style={styles.info}
                     onPress={() => this.props.navigation.navigate('Home')}
                 >
-                    <Text>
+                    <Text style={styles.info}>
                         <AntDesign name='arrowleft' size={24} color='black' />
                         HOME
                     </Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
+              style={styles.info}
                     onPress={() => this.logout()}
                 >
                     <Text style={styles.info}>{this.state.owner}</Text>
@@ -79,8 +80,8 @@ class ProfileData extends Component {
                         <Text>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
-                    <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    <Text style={styles.container}>
+                    <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
+                    <Text style={styles.info}>
                         Cerrar sesion
                     </Text>
 
@@ -98,13 +99,13 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'pink',
+        backgroundColor: 'black',
         overflow: 'auto'
     },
     info: {
         fontSize: 20,
         fontWeight: '600',
-        color: 'pink'
+        color: 'white'
     },
     arrow: {
         alignItems: 'start'

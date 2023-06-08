@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
   boton: {
       marginTop: 32,
-      backgroundColor: 'pink',
+      backgroundColor: 'green',
       padding: 10,
       borderRadius: 20,
   },
