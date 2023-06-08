@@ -147,7 +147,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 300,
     color: 'white',
-    backgroundColor: 'black'
+    //backgroundColor: 'black',
+
+
+
     
     
   },

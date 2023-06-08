@@ -81,7 +81,7 @@ class BuscadorUsuarios extends Component {
 
 const styles = StyleSheet.create({
   users: {
-    backgroundColor: "#cbe8aa",
+    backgroundColor: "green",
     borderRadius: "10px",
     margin: "10px",
     textAlign: "center",
