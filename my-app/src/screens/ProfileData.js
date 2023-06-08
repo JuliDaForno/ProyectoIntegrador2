@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import { AntDesign } from '@expo/vector-icons';
 import Home from './Home'
-
+import Post from '../components/Post';
 class ProfileData extends Component {
     constructor(props) {
         super(props)
@@ -37,11 +37,13 @@ class ProfileData extends Component {
             docs => {
                 let posts = [];
                 docs.forEach(doc => {
+                    console.log('posts,', doc.data())
                     posts.push({
                         id: doc.id,
                         data: doc.data()
                     })
                 });
+                console.log(posts, 'posts usuario logeado')
                 this.setState({
                     posteos: posts
                 })
@@ -82,11 +84,11 @@ class ProfileData extends Component {
                         Cerrar sesion
                     </Text>
 
-
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => <Home data={item} />} />
+                        renderItem={({ item }) => <Post data={item} />} 
+                        />
                 </TouchableOpacity>
 
             </View>
@@ -96,7 +98,8 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'pink'
+        backgroundColor: 'pink',
+        overflow: 'auto'
     },
     info: {
         fontSize: 20,
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
     },
     arrow: {
         alignItems: 'start'
-    }
+    },
+    
 })
 export default ProfileData
