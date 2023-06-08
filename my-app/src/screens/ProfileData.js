@@ -69,6 +69,9 @@ class ProfileData extends Component {
                         <AntDesign name='arrowleft' size={24} color='black' />
                         HOME
                     </Text>
+                    <Text style={styles.info1}>
+                        Cerrar sesion
+                    </Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
@@ -81,15 +84,14 @@ class ProfileData extends Component {
                         : null}
                     
                     <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    <Text style={styles.info}>
-                        Cerrar sesion
-                    </Text>
-
+                    
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <Post data={item} />} 
                         />
+                       
+
                 </TouchableOpacity>
 
             </View>
@@ -103,9 +105,16 @@ const styles = StyleSheet.create({
         overflow: 'auto'
     },
     info: {
-        fontSize: 20,
+        fontSize: 13,
         fontWeight: '600',
         color: 'white'
+    },
+    info1: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: 'white',
+        textAlign: 'right',
+        marginLeft: 5
     },
     arrow: {
         alignItems: 'start'
