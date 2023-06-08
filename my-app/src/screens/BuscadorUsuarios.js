@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
@@ -41,18 +41,28 @@ constructor(props) {
   render() {
     return (
       <View >
-        <Text>Buscador de perfiles</Text>
-        <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup} filtrador= {(user) =>this.state.filtrarPosteo(user)}/>
-       
+        <Text>Buscador de perfiles</Text>  
+        <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup} filtrador= {(user) =>this.state.filtrarPosteo(user)}/> 
         <FlatList
-        data={this.state.arrDocs}
+        data={this.state.posts}
         keyExtractor={(item)=> item.id.toString()}
-        renderItem={({ item }) => <Text>{item.data.owner}</Text>}
+        renderItem={({ item }) => <Text style = {styles.users}>{item.data.owner} / {item.data.nombreDeUsuario}</Text>}
       />
+      
 
         
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  users:{
+    backgroundColor: '#cbe8aa',
+    borderRadius: '10px',
+    margin: '10px',
+    textAlign: 'center'
+  }
+})
+
 export default BuscadorUsuarios
