@@ -59,7 +59,7 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
         
         <>
            
-        <Text >{this.state.infoUser.data.owner}</Text>
+        <Text style = {styles.info}>{this.state.infoUser.data.owner}</Text>
 
         <Posteos
        data = {this.state.posteos}

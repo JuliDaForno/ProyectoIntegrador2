@@ -90,7 +90,7 @@ class Post extends Component {
             })
           }
         >
-          <Text >{this.props.data.data.owner}</Text>
+          <Text style ={styles.info}>{this.props.data.data.owner}</Text>
         </TouchableOpacity> : <TouchableOpacity
        
           onPress={() =>
@@ -159,6 +159,9 @@ const styles = StyleSheet.create({
   },
   info:{
     color: 'white'
+  },
+  nombre:{
+    color:"white"
   }
   
   
