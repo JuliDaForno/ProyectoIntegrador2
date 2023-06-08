@@ -17,13 +17,15 @@ class BuscadorFiltrado extends Component{
         let filtrado = arrayFuente.filter((element) => 
         {
         return(
-            element.data.email && element.data.email.toLowerCase().includes(texto.toLowerCase()) || 
+            element.data.owner.toLowerCase().includes(texto.toLowerCase()) || 
         element.data.nombreDeUsuario && element.data.nombreDeUsuario.toLowerCase().includes(texto.toLowerCase()) )
         })
         return filtrado
 
     }
 
+
+    
     guardarValor(event){
         this.setState(
             {
@@ -40,6 +42,7 @@ class BuscadorFiltrado extends Component{
         
     }
     render(){
+        console.log(this.props)
         return(
             <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
                <div>

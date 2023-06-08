@@ -20,7 +20,7 @@ constructor(props) {
 }
 
   componentDidMount() {
-    db.collection('posts')
+    db.collection('users')
     .onSnapshot(docs => {
       let arrDocs = []
 
@@ -40,14 +40,17 @@ constructor(props) {
   }
   render() {
     return (
-      <View>
+      <View >
         <Text>Buscador de perfiles</Text>
         <BuscadorFiltrado actualizador= {(data) => this.actualizadorDeEstado(data)} fuente = {this.state.postBackup} filtrador= {(user) =>this.state.filtrarPosteo(user)}/>
        
-        <Home
-            data={this.state.posts}
-            navigation= {this.props.navigation}
-        />
+        <FlatList
+        data={this.state.arrDocs}
+        keyExtractor={(item)=> item.id.toString()}
+        renderItem={({ item }) => <Text>{item.data.owner}</Text>}
+      />
+
+        
       </View>
     )
   }
