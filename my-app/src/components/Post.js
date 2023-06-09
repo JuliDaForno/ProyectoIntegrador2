@@ -11,7 +11,7 @@ class Post extends Component {
       isLiked: false,
       owner: false,
       cantidadDeLikes: 
-      this.props.data.data.likes.lenght
+      this.props.data.data.likes.length
     };
   }
 
