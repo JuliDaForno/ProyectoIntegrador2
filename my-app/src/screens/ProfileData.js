@@ -2,6 +2,8 @@ import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native
 import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
+
 import Home from './Home'
 import Post from '../components/Post';
 class ProfileData extends Component {
@@ -70,6 +72,7 @@ class ProfileData extends Component {
                         HOME
                     </Text>
                     <Text style={styles.info1}>
+                   <AntDesign name = "logout" size= {20} color= "white"/>
                         Cerrar sesion
                     </Text>
                 </TouchableOpacity>
