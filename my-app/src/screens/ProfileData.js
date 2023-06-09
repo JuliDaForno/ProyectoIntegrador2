@@ -83,7 +83,7 @@ class ProfileData extends Component {
                 >
                     <Text style={styles.info}>{this.state.owner}</Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
-                        <Text>{this.state.userInfo[0]?.data.bio}</Text>
+                        <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
                     <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
