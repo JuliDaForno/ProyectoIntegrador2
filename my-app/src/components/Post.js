@@ -10,6 +10,8 @@ class Post extends Component {
     this.state = {
       isLiked: false,
       owner: false,
+      cantidadDeLikes: 
+      this.props.data.data.likes.lenght
     };
   }
 
@@ -21,6 +23,8 @@ class Post extends Component {
       if (estaMiLike === true) {
         this.setState({
           isLiked: true,
+         
+      
         });
       }
       if (auth.currentUser.email === this.props.data.data.owner){
@@ -40,6 +44,8 @@ class Post extends Component {
       .then((resp) => {
         this.setState({
           isLiked: true,
+          cantidadDeLikes:
+          this.state.cantidadDeLikes +1,
         });
       })
       .catch((err) => console.log(err));
@@ -56,6 +62,8 @@ class Post extends Component {
       .then((resp) =>
         this.setState({
           isLiked: false,
+          cantidadDeLikes:
+          this.state.cantidadDeLikes -1
         })
       )
       .catch((err) => console.log(err));
@@ -109,17 +117,21 @@ class Post extends Component {
 
         <Text  style={styles.container}>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
-
+        <Text style ={styles.info}>{this.state.cantidadDeLikes} likes</Text>
         {this.state.isLiked ? (
           <TouchableOpacity onPress={() => this.unlike()}>
+
             <FontAwesome name="heart" size={24} color="red" />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={() => this.like()}>
             <FontAwesome name="heart-o" size={24} color="red" />
+            
           </TouchableOpacity>
+          
         )}
         <View >
+      
           <TouchableOpacity
             onPress={() =>
               this.props.navigation.navigate("Comments", {
