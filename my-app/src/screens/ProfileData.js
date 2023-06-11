@@ -86,17 +86,11 @@ class ProfileData extends Component {
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
-<<<<<<< HEAD
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style={styles.container}>
                         Cerrar sesión
                     </Text>
-
-
-=======
-                    <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
                     
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
@@ -113,15 +107,12 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-<<<<<<< HEAD
         backgroundColor: '#BC9FC0',
 
     },
     info: {
         fontSize: 20,
         fontWeight: 'bold',
-        
-=======
         backgroundColor: 'black',
         overflow: 'auto'
     },
@@ -136,7 +127,6 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'right',
         marginLeft: 5
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
     },
     arrow: {
         alignItems: 'start'

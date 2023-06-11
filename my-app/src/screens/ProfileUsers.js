@@ -59,11 +59,7 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
         
         <>
            
-<<<<<<< HEAD
         <Text style= {styles.owner}>{this.state.infoUser.data.owner}</Text>
-=======
-        <Text style = {styles.info}>{this.state.infoUser.data.owner}</Text>
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
 
         <Posteos
        data = {this.state.posteos}
@@ -80,7 +76,6 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
 }
 const styles = StyleSheet.create({
   container:{
-<<<<<<< HEAD
    backgroundColor: '#DCDCDD',
    flex:1
   },
@@ -92,14 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#10254E',
     borderRadius:10,
     color: 'white',
-    textAlign: 'center'
-=======
-   backgroundColor: 'black',
-   flex:1
-  },
-  info:{
-    color: 'white'
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
+    textAlign: 'center',
   }
  
 })

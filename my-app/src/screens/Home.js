@@ -38,10 +38,6 @@ export default class Home extends Component {
   render() {
     return (
       <View style= {styles.container}>
-<<<<<<< HEAD
-=======
-        <Text style= {styles.home}>Home</Text>
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
        
         <Posteos
             data={this.state.posts}
@@ -55,11 +51,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-<<<<<<< HEAD
     backgroundColor: '#E0E4EC'
-=======
-    backgroundColor:'black'
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
   
   },
   home:{

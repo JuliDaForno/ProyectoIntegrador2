@@ -87,16 +87,15 @@ class Post extends Component {
     console.log(this.props);
     return (
       <View style={styles.container}>
-<<<<<<< HEAD
         < View style={styles.cadaPost}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
           <Text style = {styles.owner}>{this.props.data.data.owner}</Text>
         </TouchableOpacity>
-
         <Image
           source={{ uri: this.props.data.data.foto }}
           style={styles.img}
         />
+
         <View style={styles.commentContainer}>
         <FontAwesome
                 name='comment'
@@ -106,30 +105,7 @@ class Post extends Component {
         <Text style={styles.descripcion}>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
         </View>
-        {
-          this.state.isLiked ?
-            <TouchableOpacity
-              onPress={() => this.unlike()}
-            >
-              <FontAwesome
-                name='heart'
-                size={24}
-                color='red'
-              />
-            </TouchableOpacity>
-            
-            :
-
-            <TouchableOpacity
-              onPress={() => this.like()}
-            >
-              <FontAwesome
-                name='heart-o'
-                size={24}
-                color='red'
-              />
-            </TouchableOpacity>
-        }
+       
         <View>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Comments', {id: this.props.data.id })}
@@ -137,8 +113,8 @@ class Post extends Component {
             <Text style={styles.comment}>
               Agregar comentario
             </Text>
-=======
-        <View   > 
+            </TouchableOpacity>
+        <View> 
           {this.state.owner ? <TouchableOpacity
           
           onPress={() =>
@@ -149,7 +125,7 @@ class Post extends Component {
             })
           }
         >
-          <Text style ={styles.info}>{this.props.data.data.owner}</Text>
+          
         </TouchableOpacity> : <TouchableOpacity
        
           onPress={() =>
@@ -158,15 +134,8 @@ class Post extends Component {
             })
           }
         >
-          <Text style ={styles.info}>{this.props.data.data.owner}</Text>
         </TouchableOpacity>}
         </View>
-
-        <Image source={{ uri: this.props.data.data.foto }} style={styles.img} />
-
-        <Text>Post</Text>
-
-        <Text  style={styles.container}>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
         <Text style ={styles.info}>{this.state.cantidadDeLikes} likes</Text>
         {this.state.isLiked ? (
@@ -178,7 +147,6 @@ class Post extends Component {
           <TouchableOpacity onPress={() => this.like()}>
             <FontAwesome name="heart-o" size={24} color="red" />
             
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
           </TouchableOpacity>
           
         )}
@@ -191,7 +159,6 @@ class Post extends Component {
               })
             }
           >
-            <Text style={styles.container}>Agregar comentario</Text>
           </TouchableOpacity>
         </View>
         {console.log(this.state.owner, 'quien')}
@@ -201,20 +168,15 @@ class Post extends Component {
           </TouchableOpacity>
         ) : null}
       </View>
-<<<<<<< HEAD
       </View>
-    )
-=======
-    );
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
-  }
+      </View>
+) 
 }
-
+}
 const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
     flex: 1,
-<<<<<<< HEAD
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -257,16 +219,10 @@ const styles = StyleSheet.create({
   },
   commentContainer:{
     flexDirection: 'row', 
-    alignItems: 'center' 
-=======
+    alignItems: 'center' ,
     width: 300,
     color: 'white',
     //backgroundColor: 'black',
-
-
-
-    
-    
   },
   img: {
     height: 200,
@@ -276,11 +232,11 @@ const styles = StyleSheet.create({
   },
   nombre:{
     color:"white"
->>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
   }
   
   
-});
+  });
+
 
 export default Post;
 
