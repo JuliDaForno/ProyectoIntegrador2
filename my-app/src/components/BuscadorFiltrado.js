@@ -46,7 +46,7 @@ class BuscadorFiltrado extends Component{
         return(
             <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
                <div>
-               <label>Busca lo que quieras</label>
+               <label style ={styles.verde}>Busca lo que quieras</label>
                 </div> 
                 <div>
                 <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
@@ -57,4 +57,10 @@ class BuscadorFiltrado extends Component{
         )
     }
 }
+const styles = StyleSheet.create({
+   
+    verde:{
+      color:'white'
+    }
+  });
 export default BuscadorFiltrado

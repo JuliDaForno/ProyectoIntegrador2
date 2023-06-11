@@ -90,7 +90,7 @@ export default FormRegister
 const styles = StyleSheet.create({
     input:{
         borderWidth:1,
-        borderColor: 'pink',
+        borderColor: 'green',
         marginTop: 24,
         height:24,
         padding:5,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         color:'white'
     },
     alert:{
-        color: 'pink',
+        color: 'green',
         fontWeight: 'bold',
     }
 })

@@ -55,6 +55,7 @@ class NewPost extends Component {
             <>
               <FormPost stateDescripcion={this.state.descripcion} actualizarDescripcion={(text) => this.actualizarDescripcion(text)} />
               <TouchableOpacity
+          
                 onPress={() => this.crearPosteo({
                   descripcion: this.state.descripcion,
                   foto: this.state.foto,
@@ -73,7 +74,8 @@ class NewPost extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1
+    flex: 1,
+    
   },
  
 })

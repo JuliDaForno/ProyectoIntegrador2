@@ -2,8 +2,10 @@ import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native
 import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import { AntDesign } from '@expo/vector-icons';
-import Home from './Home'
+import { FontAwesome } from "@expo/vector-icons";
 
+import Home from './Home'
+import Post from '../components/Post';
 class ProfileData extends Component {
     constructor(props) {
         super(props)
@@ -37,11 +39,13 @@ class ProfileData extends Component {
             docs => {
                 let posts = [];
                 docs.forEach(doc => {
+                    console.log('posts,', doc.data())
                     posts.push({
                         id: doc.id,
                         data: doc.data()
                     })
                 });
+                console.log(posts, 'posts usuario logeado')
                 this.setState({
                     posteos: posts
                 })
@@ -60,33 +64,46 @@ class ProfileData extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity
-                    style={styles.arrow}
+                  style={styles.info}
                     onPress={() => this.props.navigation.navigate('Home')}
                 >
-                    <Text>
+                    <Text style={styles.info}>
                         <AntDesign name='arrowleft' size={24} color='black' />
                         HOME
+                    </Text>
+                    <Text style={styles.info1}>
+                   <AntDesign name = "logout" size= {20} color= "white"/>
+                        Cerrar sesion
                     </Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
+              style={styles.info}
                     onPress={() => this.logout()}
                 >
                     <Text style={styles.info}>{this.state.data.owner}</Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
-                        <Text>{this.state.userInfo[0]?.data.bio}</Text>
+                        <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
+<<<<<<< HEAD
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style={styles.container}>
                         Cerrar sesión
                     </Text>
 
 
+=======
+                    <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
+                    
+>>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => <Home data={item} />} />
+                        renderItem={({ item }) => <Post data={item} />} 
+                        />
+                       
+
                 </TouchableOpacity>
 
             </View>
@@ -96,6 +113,7 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+<<<<<<< HEAD
         backgroundColor: '#BC9FC0',
 
     },
@@ -103,9 +121,26 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         
+=======
+        backgroundColor: 'black',
+        overflow: 'auto'
+    },
+    info: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: 'white'
+    },
+    info1: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: 'white',
+        textAlign: 'right',
+        marginLeft: 5
+>>>>>>> a3c2f064eef4d4d115746cd162bcb6de68d026d4
     },
     arrow: {
         alignItems: 'start'
-    }
+    },
+    
 })
 export default ProfileData

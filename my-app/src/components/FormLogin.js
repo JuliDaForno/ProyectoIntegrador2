@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: 'pink',
+        borderColor: 'green',
         marginTop: 24,
         height: 24,
         padding: 5,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     boton: {
         marginTop: 32,
-        backgroundColor: 'pink',
+        backgroundColor: 'green',
         padding: 10,
         borderRadius: 20,
     },
