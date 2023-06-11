@@ -75,21 +75,24 @@ class Post extends Component {
     console.log(this.props)
     return (
       <View style={styles.container}>
-        
+        < View style={styles.cadaPost}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
-          <Text>{this.props.data.data.owner}</Text>
+          <Text style = {styles.owner}>{this.props.data.data.owner}</Text>
         </TouchableOpacity>
 
         <Image
           source={{ uri: this.props.data.data.foto }}
           style={styles.img}
         />
-
-        <Text>Post</Text>
-
-        <Text>{this.props.data.data.descripcion}</Text>
+        <View style={styles.commentContainer}>
+        <FontAwesome
+                name='comment'
+                size={24}
+                color='#D8E7EB'
+              />
+        <Text style={styles.descripcion}>{this.props.data.data.descripcion}</Text>
         {console.log(this.props.data.data)}
-       
+        </View>
         {
           this.state.isLiked ?
             <TouchableOpacity
@@ -118,7 +121,7 @@ class Post extends Component {
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Comments', {id: this.props.data.id })}
           >
-            <Text>
+            <Text style={styles.comment}>
               Agregar comentario
             </Text>
           </TouchableOpacity>
@@ -128,6 +131,7 @@ class Post extends Component {
                                 <FontAwesome name="trash-o" size={24} color="black" />
                             </TouchableOpacity>
       </View>
+      </View>
     )
   }
 }
@@ -135,10 +139,50 @@ class Post extends Component {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   img: {
-    height: 200
+    height: 300,
+    width: 300,
+    borderRadius: 5, 
+  },
+  cadaPost: {
+    margin: 7,
+    padding: 50,
+    borderWidth: 3,
+    borderRadius: 5,
+    borderColor: '#7F7F80',
+    backgroundColor: '#C2C9D7'
+
+  },
+  comment: {
+    padding: 10,
+    backgroundColor: '#B5AACC',
+    borderRadius:10,
+    margin: 10,
+
+  },
+  descripcion:{
+    padding: 10,
+    fontSize: 18,
+    margin: 10,
+    backgroundColor: '#DDDBE2',
+    borderColor: '#C2C2C3'
+  },
+  owner:{
+    padding: 10,
+    margin: 10,
+    fontWeight: 'bold', 
+    fontSize: 15,
+    backgroundColor: '#9CADCE',
+    borderRadius:10,
+    color: '#10254E'
+  },
+  commentContainer:{
+    flexDirection: 'row', 
+    alignItems: 'center' 
   }
 })
 

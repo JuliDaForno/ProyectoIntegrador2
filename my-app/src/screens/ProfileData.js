@@ -72,14 +72,14 @@ class ProfileData extends Component {
                 <TouchableOpacity
                     onPress={() => this.logout()}
                 >
-                    <Text style={styles.info}>{this.state.owner}</Text>
+                    <Text style={styles.info}>{this.state.data.owner}</Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
                     <Text style={styles.container}>
-                        Cerrar sesion
+                        Cerrar sesión
                     </Text>
 
 
@@ -96,12 +96,13 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'pink'
+        backgroundColor: '#BC9FC0',
+
     },
     info: {
         fontSize: 20,
-        fontWeight: '600',
-        color: 'pink'
+        fontWeight: 'bold',
+        
     },
     arrow: {
         alignItems: 'start'
