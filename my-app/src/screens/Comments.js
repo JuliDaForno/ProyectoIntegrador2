@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 import FormComments from '../components/FormComments'
 import { db } from '../firebase/config'
 import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 
 class Comments extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {},
-      comments: []
+      data: {}
     }
   }
 
@@ -36,13 +36,24 @@ class Comments extends Component {
             HOME
           </Text>
         </TouchableOpacity>
-        
+
 
         <FlatList
           style={styles.comentarios}
           data={this.state.data.comments}
           keyExtractor={item => item.createdAt.toString}
-          renderItem={({ item }) => <Text>{item.comentario}</Text>}
+          renderItem={({ item }) => (
+            <View style={styles.commentContainer}>
+                <FontAwesome name="comment" size={24} color="#D8E7EB" />
+                <Text>{item.comentario}</Text>
+            </View>
+          )}
+
+          ListEmptyComponent={() => (
+            <View style={styles.emptyContainer}>
+              <Text>No hay comentarios aún. ¡Se el primero en comentar!</Text>
+            </View>
+          )}
         />
         <FormComments idPost={this.props.route.params.id} />
 
@@ -73,7 +84,7 @@ const styles = StyleSheet.create({
   },
   arrow: {
     alignItems: 'start'
-  },    
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -81,7 +92,24 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: 'center',
     textAlign: 'center',
-}
+  },
+  comentarios: {
+    padding: 10,
+    backgroundColor: '#B5AACC',
+    borderRadius: 10,
+    margin: 10,
+  },
+  commentContainer:{
+    flexDirection: 'row', 
+    alignItems: 'center' ,
+    width: 300,
+    color: 'white',
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 })
 
 export default Comments
