@@ -42,12 +42,12 @@ class BuscadorFiltrado extends Component{
         return(
 
             <View onSubmit={(event)=> this.evitarSubmit(event)}>
-                <View  >
-                    <Text style ={styles.verde}>Busca lo que quieras</Text>
-                </View> 
-                <View >
+                 
+                <View style={styles.verde1} >
                 <TextInput 
-                style ={styles.verde}
+              
+                style ={styles.verde1}
+                placeholder='Escribi lo que quieras'
                 onChangeText={(text)=> this.guardarValor(text)} 
                 value={this.state.valorInput}
                 />
@@ -58,10 +58,10 @@ class BuscadorFiltrado extends Component{
 }
 const styles = StyleSheet.create({
    
-    verde:{
-      color:'white',
-     
-    
+    verde1:{
+      color:'black',
+      backgroundColor: 'white',
+     flex: 1,
       
     }
   });

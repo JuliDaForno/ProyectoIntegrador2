@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
         textAlign: 'center', 
         alignItems: 'center',
         margin: 10,
-        backgroundColor: '#9183A7'
+        backgroundColor: '#9183A7',
+
     },
     info1: {
         fontSize: 13,
@@ -132,7 +133,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         textAlign: 'center',
         margin: 10,
-        backgroundColor: '#9183A7' 
+        backgroundColor: '#9183A7' ,
+        
     },
     arrow: {
         alignItems: 'center',

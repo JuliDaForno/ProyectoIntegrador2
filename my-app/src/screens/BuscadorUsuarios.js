@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
   rosa:{
     backgroundColor:'black',
     flex: 1
-
   },
   verde:{
     color:'white',  
