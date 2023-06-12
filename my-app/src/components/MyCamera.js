@@ -65,6 +65,7 @@ class MyCamera extends Component {
                 ref={(metodosComponente) => this.metodosCamara = metodosComponente}
               />
               <TouchableOpacity
+                style={styles.sacarFoto}
                 onPress={() => this.tomarFoto()}
               >
                 <Text>
@@ -80,6 +81,7 @@ class MyCamera extends Component {
                 />
                 <View>
                   <TouchableOpacity
+                    style={styles.aceptarFoto}
                     onPress={() => this.aceptarFoto()}
                   >
                     <Text>
@@ -87,6 +89,7 @@ class MyCamera extends Component {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    style={styles.aceptarFoto}
                     onPress={() => this.rechazarFoto()}
                   >
                     <Text>
@@ -105,13 +108,47 @@ class MyCamera extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#B5AACC',
   },
   camara: {
-    flex: 1
+    flex: 1,
+    height: '300%',
+    marginTop: 20
   },
   img: {
-    flex: 1
+    flex: 1,
+    height:'197%',
+    marginTop: 40,
+    marginBottom: 3
+  },
+  btn:{
+    height: '20%',
+    padding: 5,
+    marginTop: 40
+  },
+  aceptarFoto:{
+    borderStyle: 'solid',
+    borderWith: 1,
+    borderColor: 'black',
+    backgroundColor: '#D7CAC7',
+    marginHorizontal: 70,
+    marginVertical: 10,
+    padding: 15,
+    textAlign: 'center',
+    color: 'white',
+    borderRadius: 7,
+  },
+  sacarFoto:{
+      marginHorizontal: 100,
+      marginVertical:5,
+      padding: 15,
+      textAlign: 'center',
+      borderColor: 'black',
+      backgroundColor: '#D7CAC7',
+      color: 'white',
+      borderRadius: 7,
+      borderStyle: 'solid',
   }
 
 })

@@ -16,6 +16,7 @@ class Comments extends Component {
   componentDidMount() {
     db.collection('posts')
       .doc(this.props.route.params.id)
+     // .orderBy('createdAt', 'desc')
       .onSnapshot(doc => {
         this.setState({
           data: doc.data()

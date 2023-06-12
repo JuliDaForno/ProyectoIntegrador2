@@ -55,6 +55,7 @@ class NewPost extends Component {
             <>
               <FormPost stateDescripcion={this.state.descripcion} actualizarDescripcion={(text) => this.actualizarDescripcion(text)} />
               <TouchableOpacity
+              style= {styles.mostrarCamara}
           
                 onPress={() => this.crearPosteo({
                   descripcion: this.state.descripcion,
@@ -63,7 +64,7 @@ class NewPost extends Component {
                   comments: this.state.comments
                 })}
               >
-                <Text> Enviar el posteo</Text>
+                <Text style={styles.enviar}> Enviar el posteo</Text>
               </TouchableOpacity>
             </>
         }
@@ -74,9 +75,16 @@ class NewPost extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1,
-    
+    flex: 1
   },
+  mostrarCamara:{
+    backgroundColor: '#B5AACC',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius:8,
+    marginBottom: 15,
+    textAlign: 'center'
+  }
  
 })
 
