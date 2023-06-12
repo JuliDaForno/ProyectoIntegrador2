@@ -60,7 +60,6 @@ class BuscadorUsuarios extends Component {
         renderItem={({ item }) => (
           <View style= {styles.flatlistContainer}>
             {" "}
-            {console.log('0090', item.data.owner)}
             <TouchableOpacity
               onPress={() =>
                 this.props.navigation.navigate("ProfileUsers", {
@@ -76,7 +75,7 @@ class BuscadorUsuarios extends Component {
           </View>
         )}
       />:  
-      <Text style= {styles.users} >No se encontraron resultados</Text> 
+      <Text style= {styles.alert}> No se encontraron resultados</Text> 
       }
         
       </View>
@@ -94,19 +93,21 @@ const styles = StyleSheet.create({
 
   },
   rosa:{
-    backgroundColor:'black'
+    backgroundColor:'black',
+    flex: 1
+
   },
   verde:{
-    color:'white'
+    color:'white',  
   },
   alert:{
-    color:'red'
+    color:'red',
   },
   flatlistContainer:{
     alignItems: 'center',
     margin: 20,
     padding: 10,
-
+  
   }
 });
 

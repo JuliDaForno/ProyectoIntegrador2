@@ -96,6 +96,7 @@ class ProfileData extends Component {
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => <Post data={item} />}
+                        //la propiedad se llama item porque le estas pasando una propiedad
                     />
                 </TouchableOpacity>
 
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#BC9FC0',
+        overflow: 'auto'
 
     },
 
