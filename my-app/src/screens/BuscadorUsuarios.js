@@ -52,28 +52,32 @@ class BuscadorUsuarios extends Component {
           fuente={this.state.postBackup}
           filtrador={(user) => this.state.filtrarPosteo(user)}
         />
+        {this.state.posts.length >0? 
         <FlatList
-          data={this.state.posts}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View>
+        data={this.state.posts}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            {" "}
+            {console.log('0090', item.data.owner)}
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("ProfileUsers", {
+                  email: item.data.owner,
+                })
+              }
+            >
               {" "}
-              {console.log('0090', item.data.owner)}
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate("ProfileUsers", {
-                    email: item.data.owner,
-                  })
-                }
-              >
-                {" "}
-                <Text style={styles.users}>
-                  {item.data.owner} / {item.data.nombreDeUsuario}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+              <Text style={styles.users}>
+                {item.data.owner} / {item.data.nombreDeUsuario}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />:  
+      <Text style= {styles.users} >No se encontraron resultados</Text> 
+      }
+        
       </View>
     );
   }

@@ -48,8 +48,10 @@ class BuscadorFiltrado extends Component{
                <div>
                <label style ={styles.verde}>Busca lo que quieras</label>
                 </div> 
+
                 <div>
-                <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
+                    <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
+                
             </div>
             <button onClick={() => this.metodoQueEnvia()}>Enviar consulta</button> 
 

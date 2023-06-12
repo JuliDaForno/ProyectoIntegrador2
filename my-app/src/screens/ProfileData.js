@@ -81,7 +81,7 @@ class ProfileData extends Component {
               style={styles.info}
                     onPress={() => this.logout()}
                 >
-                    <Text style={styles.info}>{this.state.data.owner}</Text>
+                    <Text style={styles.info}></Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
