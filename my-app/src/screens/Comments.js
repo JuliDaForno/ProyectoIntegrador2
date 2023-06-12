@@ -9,8 +9,7 @@ class Comments extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {},
-      comments: []
+      data: {}
     }
   }
 
@@ -47,6 +46,12 @@ class Comments extends Component {
             <View style={styles.commentContainer}>
                 <FontAwesome name="comment" size={24} color="#D8E7EB" />
                 <Text>{item.comentario}</Text>
+            </View>
+          )}
+
+          ListEmptyComponent={() => (
+            <View style={styles.emptyContainer}>
+              <Text>No hay comentarios aún. ¡Se el primero en comentar!</Text>
             </View>
           )}
         />
@@ -99,7 +104,11 @@ const styles = StyleSheet.create({
     alignItems: 'center' ,
     width: 300,
     color: 'white',
-    //backgroundColor: 'black',
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 })
 
