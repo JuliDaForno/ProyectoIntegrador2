@@ -23,18 +23,18 @@ class ProfileData extends Component {
         db.collection("users").where("owner", "==", auth.currentUser.email).onSnapshot(
             (docs) => {
 
-            let usuarios = []
-            docs.forEach((doc) => {
-                usuarios.push({
-                    
-                    data: doc.data()
+                let usuarios = []
+                docs.forEach((doc) => {
+                    usuarios.push({
+
+                        data: doc.data()
+                    })
+                })
+                this.setState({
+                    userInfo: usuarios,
+
                 })
             })
-            this.setState({
-                userInfo: usuarios,
-               
-            })
-        })
         db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
             docs => {
                 let posts = [];
@@ -60,11 +60,11 @@ class ProfileData extends Component {
     }
 
     render() {
-       console.log(this.state);
+        console.log(this.state);
         return (
             <View style={styles.container}>
                 <TouchableOpacity
-                  style={styles.info}
+                    style={styles.info}
                     onPress={() => this.props.navigation.navigate('Home')}
                 >
                     <Text style={styles.info}>
@@ -72,29 +72,33 @@ class ProfileData extends Component {
                         HOME
                     </Text>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
-              style={styles.info}
-                    onPress={() => this.logout()}
+                    style={styles.info}
                 >
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
-                    
+
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => this.logout()}>
                     <Text style={styles.info1}>
-                    <AntDesign name = "logout" size= {20} color= "white"/>
+                        <AntDesign name="logout" size={20} color="white" />
                         Cerrar sesión
                     </Text>
-                    
+
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => <Post data={item} />} 
-                        />
-                       
-
+                        renderItem={({ item }) => <Post data={item} />}
+                    />
                 </TouchableOpacity>
+
+
+
 
             </View>
         )
@@ -127,6 +131,6 @@ const styles = StyleSheet.create({
     arrow: {
         alignItems: 'start'
     },
-    
+
 })
 export default ProfileData

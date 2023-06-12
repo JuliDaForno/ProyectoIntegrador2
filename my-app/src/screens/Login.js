@@ -6,16 +6,16 @@ class Login extends Component {
 
   render() {
     return (
-      <View style= {styles.input}> 
+      <View style={styles.input}>
         <FormLogin navigation={this.props.navigation} />
         <Text style={styles.btnText}>
-          No tenes cuenta? 
+          No tenes cuenta?
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Register')}
           >
             <Text
-                      style={styles.boton}
-                      >
+              style={styles.boton}
+            >
               Registrate Aca!
             </Text>
           </TouchableOpacity>
@@ -27,16 +27,16 @@ class Login extends Component {
 const styles = StyleSheet.create({
 
   boton: {
-      marginTop: 32,
-      backgroundColor: 'green',
-      padding: 10,
-      borderRadius: 20,
+    marginTop: 32,
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 20,
   },
   btnText: {
-      textAlign: 'center',
-      fontWeight: 'bold',
-      color: 'black'
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'black'
   }
-  
+
 })
 export default Login

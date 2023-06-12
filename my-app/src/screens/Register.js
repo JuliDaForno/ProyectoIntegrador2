@@ -28,11 +28,6 @@ class Register extends Component {
         </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeMenu')}
-        >
-          <Text>HOME</Text>
-        </TouchableOpacity>
-
       </View>
     )
   }
