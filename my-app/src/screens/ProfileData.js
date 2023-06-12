@@ -76,6 +76,7 @@ class ProfileData extends Component {
                 <TouchableOpacity
                     style={styles.info}
                 >
+                    <Text style={styles.info}></Text>
             
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
@@ -109,28 +110,33 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#BC9FC0',
+        overflow: 'auto'
 
     },
-    info: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        backgroundColor: 'black',
-        overflow: 'auto'
-    },
+
     info: {
         fontSize: 13,
         fontWeight: '600',
-        color: 'white'
+        color: 'white',
+        textAlign: 'center', 
+        alignItems: 'center',
+        margin: 10,
+        backgroundColor: '#9183A7',
+
     },
     info1: {
         fontSize: 13,
         fontWeight: '600',
         color: 'white',
         textAlign: 'right',
-        marginLeft: 5
+        marginLeft: 5,
+        textAlign: 'center',
+        margin: 10,
+        backgroundColor: '#9183A7' ,
+        
     },
     arrow: {
-        alignItems: 'start'
+        alignItems: 'center',
     },
 
 })

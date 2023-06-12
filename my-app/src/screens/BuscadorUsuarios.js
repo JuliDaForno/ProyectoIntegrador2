@@ -55,28 +55,29 @@ class BuscadorUsuarios extends Component {
         />
         {this.state.posts.length > 0? 
         <FlatList
-          data={this.state.posts}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View>
+        data={this.state.posts}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style= {styles.flatlistContainer}>
+            {" "}
+            {console.log('0090', item.data.owner)}
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("ProfileUsers", {
+                  email: item.data.owner,
+                })
+              }
+            >
               {" "}
-              {console.log('0090', item.data.owner)}
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate("ProfileUsers", {
-                    email: item.data.owner,
-                  })
-                }
-              >
-                {" "}
-                <Text style={styles.users}>
-                  {item.data.owner} / {item.data.nombreDeUsuario}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />:<Text style= {styles.alert}> No se encontraron resultados</Text>
-        }
+              <Text style={styles.users}>
+                {item.data.owner} / {item.data.nombreDeUsuario}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />:  
+      <Text style= {styles.users} >No se encontraron resultados</Text> 
+      }
         
       </View>
     );
@@ -85,20 +86,28 @@ class BuscadorUsuarios extends Component {
 
 const styles = StyleSheet.create({
   users: {
-    backgroundColor: "green",
-    borderRadius: "10px",
-    margin: "10px",
+    backgroundColor: "#9E68F0",
+    borderRadius: 10,
+    margin: 10,
+    padding: 10,
     textAlign: "center",
 
   },
   rosa:{
-    backgroundColor:'black'
+    backgroundColor:'black',
+    overflow: 'auto'
   },
   verde:{
     color:'white'
   },
   alert:{
     color:'red'
+  },
+  flatlistContainer:{
+    alignItems: 'center',
+    margin: 20,
+    padding: 10,
+
   }
 });
 
