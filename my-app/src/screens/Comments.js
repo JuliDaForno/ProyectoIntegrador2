@@ -16,10 +16,10 @@ class Comments extends Component {
   componentDidMount() {
     db.collection('posts')
       .doc(this.props.route.params.id)
-     // .orderBy('createdAt', 'desc')
       .onSnapshot(doc => {
         this.setState({
-          data: doc.data()
+          data: doc.data(),
+          comentarios:doc.data().comments.sort((a, b) => a.createdAt - b.createdAt).reverse() //esto es para que los comentarios aparezcan de manera ascendente
         }, () => console.log(this.state.data))
       })
   }
@@ -41,7 +41,7 @@ class Comments extends Component {
 
         <FlatList
           style={styles.comentarios}
-          data={this.state.data.comments}
+          data={this.state.comentarios}
           keyExtractor={item => item.createdAt.toString}
           renderItem={({ item }) => (
             <View style={styles.commentContainer}>
