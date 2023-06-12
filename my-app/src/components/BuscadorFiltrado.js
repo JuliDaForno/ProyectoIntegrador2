@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet, TextInput } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 
@@ -44,15 +44,15 @@ class BuscadorFiltrado extends Component{
     render(){
         console.log(this.props)
         return(
-            <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
-               <div>
-               <label style ={styles.verde}>Busca lo que quieras</label>
-                </div> 
-                <div>
-                <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
-            </div>
-            <button onClick={() => this.metodoQueEnvia()}>Enviar consulta</button> 
 
+            <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
+               <View>
+               <label style ={styles.verde}>Busca lo que quieras</label>
+                </View> 
+                <View>
+                <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
+            </View>
+            <button onClick={() => this.metodoQueEnvia()}>Enviar consulta</button> 
             </form>
         )
     }

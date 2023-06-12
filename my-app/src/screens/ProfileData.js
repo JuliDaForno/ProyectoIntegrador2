@@ -76,6 +76,7 @@ class ProfileData extends Component {
                 <TouchableOpacity
                     style={styles.info}
                 >
+            
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
