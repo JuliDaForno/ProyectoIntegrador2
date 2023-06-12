@@ -26,10 +26,10 @@ class BuscadorFiltrado extends Component{
 
 
     
-    guardarValor(event){
+    guardarValor(text){
         this.setState(
             {
-                valorInput:event.target.value
+                valorInput:text
             }, () =>{
                 let filtro = this.metodoQueFiltra(this.state.valorInput, this.props.fuente)
                 this.props.actualizador(filtro)
@@ -37,30 +37,32 @@ class BuscadorFiltrado extends Component{
         )
     }
 
-    metodoQueEnvia(){
-        console.log('Enviamos la info');
-        
-    }
     render(){
         console.log(this.props)
         return(
 
-            <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
-               <View>
-               <label style ={styles.verde}>Busca lo que quieras</label>
+            <View onSubmit={(event)=> this.evitarSubmit(event)}>
+                <View  >
+                    <Text style ={styles.verde}>Busca lo que quieras</Text>
                 </View> 
-                <View>
-                <input onChange={(event)=> this.guardarValor(event)} value={this.state.valorInput}/>
+                <View >
+                <TextInput 
+                style ={styles.verde}
+                onChangeText={(text)=> this.guardarValor(text)} 
+                value={this.state.valorInput}
+                />
+                </View>
             </View>
-            <button onClick={() => this.metodoQueEnvia()}>Enviar consulta</button> 
-            </form>
         )
     }
 }
 const styles = StyleSheet.create({
    
     verde:{
-      color:'white'
+      color:'white',
+     
+    
+      
     }
   });
 export default BuscadorFiltrado
