@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
 
   },
   rosa:{
-    backgroundColor:'black'
+    backgroundColor:'black',
+    overflow: 'auto'
   },
   verde:{
     color:'white'
