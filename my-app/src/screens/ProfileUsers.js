@@ -11,8 +11,10 @@ class ProfileUsers extends Component {
     super(props)
     this.state={
       infoUser: '',
+      userInfo:[],
         props: props,
-        posteos:[]
+        posteos:[],
+        
     }
 }
 componentDidMount(){
@@ -61,6 +63,8 @@ db.collection('posts').where('owner', '==', this.state.props.route.params.email)
            
         <Text style= {styles.owner}>{this.state.infoUser.data.owner}</Text>
 
+           <Text style={styles.info}>{this.state.infoUser.data.bio}</Text>
+                       
         <Posteos
        data = {this.state.posteos}
        navigation = {this.props.navigation}/> 
