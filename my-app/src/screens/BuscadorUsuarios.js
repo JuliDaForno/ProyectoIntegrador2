@@ -44,6 +44,7 @@ class BuscadorUsuarios extends Component {
   }
   filtrarPosteo(user) {}
   render() {
+    
     return (
       <View style ={styles.rosa}>
         <Text style ={styles.verde}>Buscador de perfiles</Text>
@@ -52,7 +53,7 @@ class BuscadorUsuarios extends Component {
           fuente={this.state.postBackup}
           filtrador={(user) => this.state.filtrarPosteo(user)}
         />
-        
+        {this.state.posts.length > 0? 
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id.toString()}
@@ -74,7 +75,9 @@ class BuscadorUsuarios extends Component {
               </TouchableOpacity>
             </View>
           )}
-        />
+        />:<Text style= {styles.alert}> No se encontraron resultados</Text>
+        }
+        
       </View>
     );
   }
@@ -93,6 +96,9 @@ const styles = StyleSheet.create({
   },
   verde:{
     color:'white'
+  },
+  alert:{
+    color:'red'
   }
 });
 
