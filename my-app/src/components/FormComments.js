@@ -13,6 +13,7 @@ export default class FormComments extends Component {
 
     crearComentario(comentario){
         db.collection('posts')
+       // .orderBy('comentario', 'asc')
         .doc(this.props.idPost)
         .update({
             comments: firebase.firestore.FieldValue.arrayUnion({

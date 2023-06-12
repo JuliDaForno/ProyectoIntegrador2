@@ -23,18 +23,18 @@ class ProfileData extends Component {
         db.collection("users").where("owner", "==", auth.currentUser.email).onSnapshot(
             (docs) => {
 
-            let usuarios = []
-            docs.forEach((doc) => {
-                usuarios.push({
-                    
-                    data: doc.data()
+                let usuarios = []
+                docs.forEach((doc) => {
+                    usuarios.push({
+
+                        data: doc.data()
+                    })
+                })
+                this.setState({
+                    userInfo: usuarios,
+
                 })
             })
-            this.setState({
-                userInfo: usuarios,
-               
-            })
-        })
         db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
             docs => {
                 let posts = [];
@@ -60,45 +60,47 @@ class ProfileData extends Component {
     }
 
     render() {
-       console.log(this.state);
+        console.log(this.state);
         return (
             <View style={styles.container}>
                 <TouchableOpacity
-                  style={styles.info}
+                    style={styles.info}
                     onPress={() => this.props.navigation.navigate('Home')}
                 >
                     <Text style={styles.info}>
                         <AntDesign name='arrowleft' size={24} color='black' />
                         HOME
                     </Text>
-                    <Text style={styles.info1}>
-                   <AntDesign name = "logout" size= {20} color= "white"/>
-                        Cerrar sesion
-                    </Text>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
-              style={styles.info}
-                    onPress={() => this.logout()}
+                    style={styles.info}
                 >
                     <Text style={styles.info}></Text>
+            
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
-                    
+
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    <Text style={styles.container}>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => this.logout()}>
+                    <Text style={styles.info1}>
+                        <AntDesign name="logout" size={20} color="white" />
                         Cerrar sesión
                     </Text>
-                    
+
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => <Post data={item} />} 
-                        />
-                       
-
+                        renderItem={({ item }) => <Post data={item} />}
+                    />
                 </TouchableOpacity>
+
+
+
 
             </View>
         )
@@ -110,27 +112,29 @@ const styles = StyleSheet.create({
         backgroundColor: '#BC9FC0',
 
     },
-    info: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        backgroundColor: 'black',
-        overflow: 'auto'
-    },
+
     info: {
         fontSize: 13,
         fontWeight: '600',
-        color: 'white'
+        color: 'white',
+        textAlign: 'center', 
+        alignItems: 'center',
+        margin: 10,
+        backgroundColor: '#9183A7'
     },
     info1: {
         fontSize: 13,
         fontWeight: '600',
         color: 'white',
         textAlign: 'right',
-        marginLeft: 5
+        marginLeft: 5,
+        textAlign: 'center',
+        margin: 10,
+        backgroundColor: '#9183A7' 
     },
     arrow: {
-        alignItems: 'start'
+        alignItems: 'center',
     },
-    
+
 })
 export default ProfileData

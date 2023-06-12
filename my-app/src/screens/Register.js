@@ -28,11 +28,6 @@ class Register extends Component {
         </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeMenu')}
-        >
-          <Text>HOME</Text>
-        </TouchableOpacity>
-
       </View>
     )
   }
@@ -41,7 +36,7 @@ const styles = StyleSheet.create({
 container1:{
   flexDirection: 'row',
   marginTop: 32,
-  backgroundColor: 'green',
+  backgroundColor: '#9E68F0',
   padding: 10,
   borderRadius: 20,
   justifyContent: 'center',

@@ -44,6 +44,7 @@ class BuscadorUsuarios extends Component {
   }
   filtrarPosteo(user) {}
   render() {
+    
     return (
       <View style ={styles.rosa}>
         <Text style ={styles.verde}>Buscador de perfiles</Text>
@@ -52,12 +53,12 @@ class BuscadorUsuarios extends Component {
           fuente={this.state.postBackup}
           filtrador={(user) => this.state.filtrarPosteo(user)}
         />
-        {this.state.posts.length >0? 
+        {this.state.posts.length > 0? 
         <FlatList
         data={this.state.posts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View>
+          <View style= {styles.flatlistContainer}>
             {" "}
             {console.log('0090', item.data.owner)}
             <TouchableOpacity
@@ -85,9 +86,10 @@ class BuscadorUsuarios extends Component {
 
 const styles = StyleSheet.create({
   users: {
-    backgroundColor: "green",
-    borderRadius: "10px",
-    margin: "10px",
+    backgroundColor: "#9E68F0",
+    borderRadius: 10,
+    margin: 10,
+    padding: 10,
     textAlign: "center",
 
   },
@@ -96,6 +98,15 @@ const styles = StyleSheet.create({
   },
   verde:{
     color:'white'
+  },
+  alert:{
+    color:'red'
+  },
+  flatlistContainer:{
+    alignItems: 'center',
+    margin: 20,
+    padding: 10,
+
   }
 });
 

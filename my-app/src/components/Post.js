@@ -70,9 +70,7 @@ class Post extends Component {
   }
   deletePost() {
     db.collection("posts")
-
       .doc(this.props.data.id)
-
       .delete({})
       .then(() => {
         console.log("Post eliminado");
@@ -228,7 +226,10 @@ const styles = StyleSheet.create({
     height: 200,
   },
   info:{
-    color: 'white'
+    color: 'white',
+    
+    
+    
   },
   nombre:{
     color:"white"
