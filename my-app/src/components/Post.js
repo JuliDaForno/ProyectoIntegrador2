@@ -170,7 +170,10 @@ const styles = StyleSheet.create({
     height: 200,
   },
   info:{
-    color: 'white'
+    color: 'white',
+    
+    
+    
   },
   nombre:{
     color:"white"

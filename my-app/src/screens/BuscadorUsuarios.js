@@ -52,6 +52,7 @@ class BuscadorUsuarios extends Component {
           fuente={this.state.postBackup}
           filtrador={(user) => this.state.filtrarPosteo(user)}
         />
+        
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id.toString()}

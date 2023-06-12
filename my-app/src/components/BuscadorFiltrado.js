@@ -44,6 +44,7 @@ class BuscadorFiltrado extends Component{
     render(){
         console.log(this.props)
         return(
+            
             <form className = 'formulario' onSubmit={(event)=> this.evitarSubmit(event)}>
                <div>
                <label style ={styles.verde}>Busca lo que quieras</label>
