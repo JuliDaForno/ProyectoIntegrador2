@@ -8,7 +8,8 @@ class Comments extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {}
+      data: {},
+      comments: []
     }
   }
 

@@ -71,23 +71,19 @@ class ProfileData extends Component {
                         <AntDesign name='arrowleft' size={24} color='black' />
                         HOME
                     </Text>
-                    <Text style={styles.info1}>
-                   <AntDesign name = "logout" size= {20} color= "white"/>
-                        Cerrar sesion
-                    </Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
               style={styles.info}
                     onPress={() => this.logout()}
                 >
-                    <Text style={styles.info}>{this.state.data.owner}</Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    <Text style={styles.container}>
+                    <Text style={styles.info1}>
+                    <AntDesign name = "logout" size= {20} color= "white"/>
                         Cerrar sesión
                     </Text>
                     
