@@ -70,9 +70,7 @@ class Post extends Component {
   }
   deletePost() {
     db.collection("posts")
-
       .doc(this.props.data.id)
-
       .delete({})
       .then(() => {
         console.log("Post eliminado");
