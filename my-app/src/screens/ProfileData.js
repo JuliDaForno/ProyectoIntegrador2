@@ -81,12 +81,15 @@ class ProfileData extends Component {
               style={styles.info}
                     onPress={() => this.logout()}
                 >
-                    <Text style={styles.info}>{this.state.owner}</Text>
+                 <Text style={styles.info}></Text>
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
                     
-                    <Text style={styles.info}>Cantidad de posteos: {this.state.posteos.length}</Text>
+                    <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
+                    <Text style={styles.container}>
+                        Cerrar sesión
+                    </Text>
                     
                     <FlatList
                         data={this.state.posteos}
@@ -104,6 +107,12 @@ class ProfileData extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#BC9FC0',
+
+    },
+    info: {
+        fontSize: 20,
+        fontWeight: 'bold',
         backgroundColor: 'black',
         overflow: 'auto'
     },
