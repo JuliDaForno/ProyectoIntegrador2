@@ -23,7 +23,7 @@ export default class FormComments extends Component {
         })
         .then(()=> {
             this.setState({
-                comentario: '',
+                comentario: '', // limpia el campo para hacer el comentario nuevo
             })
         })
         .catch((error)=> {

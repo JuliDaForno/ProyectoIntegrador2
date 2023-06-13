@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
 import React, { Component } from 'react'
 import { Camera, CameraType } from 'expo-camera'
 import { storage } from '../firebase/config'
@@ -99,7 +99,10 @@ class MyCamera extends Component {
                 </View>
               </>
               :
-              <Text>No tienes permisos para usar la Camara</Text>
+              <View>
+                <ActivityIndicator size='large' color='black' style={styles.loader}/>
+                <Text style={styles.sinPermiso}>No tienes permisos para usar la Camara</Text>
+              </View>
         }
       </View>
     )
@@ -118,16 +121,16 @@ const styles = StyleSheet.create({
   },
   img: {
     flex: 1,
-    height:'197%',
+    height: '197%',
     marginTop: 40,
     marginBottom: 3
   },
-  btn:{
+  btn: {
     height: '20%',
     padding: 5,
     marginTop: 40
   },
-  aceptarFoto:{
+  aceptarFoto: {
     borderStyle: 'solid',
     borderWith: 1,
     borderColor: 'black',
@@ -139,16 +142,33 @@ const styles = StyleSheet.create({
     color: 'white',
     borderRadius: 7,
   },
-  sacarFoto:{
-      marginHorizontal: 100,
-      marginVertical:5,
-      padding: 15,
-      textAlign: 'center',
-      borderColor: 'black',
-      backgroundColor: '#D7CAC7',
-      color: 'white',
-      borderRadius: 7,
-      borderStyle: 'solid',
+  sacarFoto: {
+    marginHorizontal: 100,
+    marginVertical: 5,
+    padding: 15,
+    textAlign: 'center',
+    borderColor: 'black',
+    backgroundColor: '#D7CAC7',
+    color: 'white',
+    borderRadius: 7,
+    borderStyle: 'solid',
+  },
+  sinPermiso: {
+    marginHorizontal: 10,
+    marginVertical: 5,
+    padding: 15,
+    textAlign: 'center',
+    borderColor: 'black',
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: 7,
+    borderStyle: 'solid',
+  },
+  loader:{
+    marginHorizontal: 10,
+    marginVertical: 5,
+    padding: 15,
+    marginTop: 300
   }
 
 })
