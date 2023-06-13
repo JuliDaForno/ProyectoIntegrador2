@@ -12,6 +12,7 @@ class FormRegister extends Component {
             nombreDeUsuario:'',
             bio:'',
             FotoPerfil:'',
+            error:''
         }
     }
         registrarUsuario(mail, password, bio, FotoPerfil, nombreDeUsuario){ 
@@ -30,9 +31,12 @@ class FormRegister extends Component {
                 })
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
+                
             
             })
-            .catch(err => console.log(err))
+            .catch(err => {console.log(err)
+            this.setState({error: err.message})})
+            
         }
 
    
@@ -70,13 +74,15 @@ class FormRegister extends Component {
         />
         <ImagenPerfil/> 
 
-        { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario ?
+        { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario && this.state.error == ''?
         <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario) }>
-        <Text style = {styles.btnText}> Registrarme</Text> 
+        <Text style = {styles.btnText}>Registrarme</Text> 
         </TouchableOpacity>
-     :
-            <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario deben ser obligatorios</Text>
-            
+        : 
+        <View>
+        <Text style={styles.alert}>{this.state.error}</Text>
+        <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario son obligatorios</Text> 
+        </View>
         }
 
 
