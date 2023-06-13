@@ -36,7 +36,13 @@ class NewPost extends Component {
       likes: likes,
       comments: comments,
     })
-      .then((resp) => {
+      .then((resp) => { 
+        this.setState({ //al hacer un nuevo posteo se te limpian los campos que usaste
+          descripcion: '',
+          foto: '',
+          likes: [],
+          coments: []
+        })
         this.props.navigation.navigate('Home')
       })
       .catch(err => console.log(err))

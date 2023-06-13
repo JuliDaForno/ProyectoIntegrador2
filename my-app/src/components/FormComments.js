@@ -21,6 +21,14 @@ export default class FormComments extends Component {
                 comentario: comentario
             })
         })
+        .then(()=> {
+            this.setState({
+                comentario: '',
+            })
+        })
+        .catch((error)=> {
+            console.log(error);
+        })
     }
 
   render() {
