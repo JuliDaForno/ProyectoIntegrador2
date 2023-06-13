@@ -74,15 +74,15 @@ class FormRegister extends Component {
         />
         <ImagenPerfil/> 
 
-        { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario && this.state.error == ''?
-        <TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario) }>
+        { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario && this.state.error==''?
+        (<TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario)}>
         <Text style = {styles.btnText}>Registrarme</Text> 
-        </TouchableOpacity>
+        </TouchableOpacity>)
+        : this.state.error ?
+        (<Text style={styles.error}>{this.state.error}</Text>)
         : 
-        <View>
-        <Text style={styles.alert}>{this.state.error}</Text>
-        <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario son obligatorios</Text> 
-        </View>
+        (<Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario son obligatorios</Text>) 
+
         }
 
 
@@ -124,5 +124,9 @@ const styles = StyleSheet.create({
     alert:{
         color: 'red',
         fontWeight: 'bold',
+    },
+    error: {
+        color: 'orange',
+        fontWeight: 'bold'
     }
 })
