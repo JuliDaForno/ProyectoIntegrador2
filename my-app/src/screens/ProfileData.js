@@ -15,6 +15,7 @@ class ProfileData extends Component {
             posteos: [],
             nombreDeUsuario: '',
             bio: '',
+         
 
 
         }
@@ -83,6 +84,7 @@ class ProfileData extends Component {
                         : null}
 
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
+                    
                 </TouchableOpacity>
 
                 <TouchableOpacity
