@@ -1,7 +1,9 @@
-import { Text, View, TextInput, TouchableOpacity, StyleSheet} from "react-native";
+import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image, } from "react-native";
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
 import ImagenPerfil from "./ImagePerfil";
+import MyCamera from "./MyCamera";
+
 
 class FormRegister extends Component {
     constructor(props){
@@ -15,6 +17,11 @@ class FormRegister extends Component {
             error:''
         }
     }
+    actualizarFotoPerfil(fotoPerfil) {
+        this.setState({
+          FotoPerfil: fotoPerfil
+        })
+      }
         registrarUsuario(mail, password, bio, FotoPerfil, nombreDeUsuario){ 
             auth.createUserWithEmailAndPassword(mail, password)
             .then (data =>{
@@ -38,6 +45,7 @@ class FormRegister extends Component {
             this.setState({error: err.message})})
             
         }
+
 
    
   render() {
@@ -72,17 +80,29 @@ class FormRegister extends Component {
         onChangeText={(text) => this.setState({bio:text})}
         value={this.state.bio}
         />
-        <ImagenPerfil/> 
 
         { this.state.inputMail && this.state.inputPassword && this.state.nombreDeUsuario && this.state.error==''?
         (<TouchableOpacity style={styles.btn} onPress={()=>this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario)}>
         <Text style = {styles.btnText}>Registrarme</Text> 
         </TouchableOpacity>)
         : this.state.error ?
-        (<Text style={styles.error}>{this.state.error}</Text>)
+        (
+        <View>
+        <Text style={styles.error}>{this.state.error}</Text>
+        <TouchableOpacity style={styles.btn} onPress = {()=>{}}>
+        <Text style = {styles.btnText}>Registrarme</Text>
+        </TouchableOpacity>
+        </View>
+        )
         : 
-        (<Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario son obligatorios</Text>) 
-
+        (
+            <View>
+            <Text style={styles.alert}>Los campos de email, contraseña y nombre de usuario son obligatorios</Text>
+            <TouchableOpacity style={styles.btn} onPress = {()=>{}}>
+            <Text style = {styles.btnText}>Registrarme</Text>
+            </TouchableOpacity>
+            </View>  
+        )
         }
 
 
@@ -100,26 +120,29 @@ const styles = StyleSheet.create({
         marginTop: 24,
         height:24,
         padding:5,
-        color: 'white'
+        color: 'white',
+        flex:1,
     },
     body:{
         backgroundColor: 'black',
         color: 'white',
         textAlign: 'center',
         fontWeight: 'bold',
-       
+        flex: 1     
     },
     btn:{
         marginTop:32,
         backgroundColor: 'black',
         padding: 10,
         borderRadius:20,
-        color: 'white'
+        color: 'white',
+        flex: 1
     },
     btnText:{
         textAlign:'center',
         fontWeight:'bold',
-        color:'white'
+        color:'white',
+        flex:1,
     },
     alert:{
         color: 'red',
@@ -128,5 +151,8 @@ const styles = StyleSheet.create({
     error: {
         color: 'orange',
         fontWeight: 'bold'
+    },
+    camara: {
+        flex:1
     }
 })

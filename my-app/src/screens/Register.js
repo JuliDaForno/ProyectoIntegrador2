@@ -2,6 +2,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import FormRegister from '../components/FormRegister'
 import { auth } from '../firebase/config'
+import MyCamera from '../components/MyCamera'
 
 class Register extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Register extends Component {
 
   render() {
     return (
-      <View >
+      <View style= {styles.camara}>
         <FormRegister navigation={this.props.navigation} />
         <View style ={styles.container1}>
         <Text style={styles.boton}>Ya tenes una cuenta    <br></br></Text>
@@ -40,6 +41,11 @@ container1:{
   padding: 10,
   borderRadius: 20,
   justifyContent: 'center',
-}}
+}, 
+camara: {
+  flex:1
+}
+
+}
   )
 export default Register
