@@ -9,7 +9,8 @@ class Comments extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {}
+      data: {},
+      comentarios: []
     }
   }
 
@@ -42,11 +43,11 @@ class Comments extends Component {
         <FlatList
           style={styles.comentarios}
           data={this.state.comentarios}
-          keyExtractor={item => item.createdAt.toString}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={styles.commentContainer}>
-                <FontAwesome name="comment" size={24} color="#D8E7EB" />
-                <Text>{item.comentario}</Text>
+                <FontAwesome name="comment" size={24} color="#D8E7EB" style={styles.comentarioDeUsuario}/>
+                <Text style={styles.hola}>{item.owner} = {item.comentario}</Text>
             </View>
           )}
 
@@ -110,6 +111,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  comentarioDeUsuario: {
+    marginLeft: 30
   }
 })
 

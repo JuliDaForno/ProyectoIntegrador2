@@ -37,7 +37,7 @@ export default class Home extends Component {
 
       this.setState({
         posts: arrDocs,
-        loader:true
+        loader: true
       })
     })
   }
@@ -52,7 +52,7 @@ export default class Home extends Component {
                 <FlatList  data={this.state.posts} keyExtractor={(data)=>data.id} renderItem={({item})=>< Post data={item}{...this.props}/>}
                 >
                     
-                </FlatList>: <ActivityIndicator size="large" color="black"/>}
+                </FlatList>: <ActivityIndicator size="large" color="black" style={styles.loader}/>}
         <Posteos
             data={this.state.posts}
             navigation= {this.props.navigation}
@@ -75,11 +75,12 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'left',
     fontSize: 25,
-
-    
   },
   isa:{
     flexDirection: 'row'
+  },
+  loader:{
+    marginTop: 250,
   }
   
 })

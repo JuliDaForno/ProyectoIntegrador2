@@ -18,7 +18,7 @@ export default class FormComments extends Component {
             comments: firebase.firestore.FieldValue.arrayUnion({
                 owner: auth.currentUser.email,
                 createdAt: Date.now(),
-                comentario: comentario
+                comentario: comentario,
             })
         })
         .then(()=> {
