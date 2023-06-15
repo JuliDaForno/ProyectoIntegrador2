@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'
 
 import FunctionalitiesNav from './FunctionalitiesNav'
 import Home from '../screens/Home'
