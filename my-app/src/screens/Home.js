@@ -6,56 +6,65 @@ import Post from '../components/Post'
 import { FontAwesome } from "@expo/vector-icons";
 
 
-import BuscadorFiltrado from '../components/BuscadorFiltrado'
-
 export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
       posts: [],
-      loader:false
-    
+      loader: false
+
     }
   }
-  actualizadorDeEstado(data){
+
+  actualizadorDeEstado(data) {
     this.setState({
-        posts:data,
-        
+      posts: data,
+
     })
-}
+  }
 
   componentDidMount() {
     db.collection('posts')
-    .orderBy('createdAt', 'desc')
-    .onSnapshot(docs => {
-      let arrDocs = []
-
-      docs.forEach(doc => arrDocs.push({
-        id: doc.id,
-        data: doc.data()
-      }))
-
-      this.setState({
-        posts: arrDocs,
-        loader: true
+      .orderBy('createdAt', 'desc')
+      .onSnapshot(docs => {
+        let arrDocs = []
+        docs.forEach(doc => arrDocs.push({
+          id: doc.id,
+          data: doc.data()
+        }))
+        this.setState({
+          posts: arrDocs,
+          loader: true
+        })
       })
-    })
   }
-  
+
   render() {
     return (
-     
-      <View style= {styles.container}>
-       <View style={styles.isa}> <FontAwesome name="camera" size={30} color="#89738C" /> < Text style= {styles.insta}> InstaPic</Text>
- </View>
- {this.state.loader?
-                <FlatList  data={this.state.posts} keyExtractor={(data)=>data.id} renderItem={({item})=>< Post data={item}{...this.props}/>}
-                >
-                    
-                </FlatList>: <ActivityIndicator size="large" color="black" style={styles.loader}/>}
-        <Posteos
+
+      <View style={styles.container}>
+        <View style={styles.isa}> 
+        <FontAwesome name="camera" size={30} color="#89738C" /> 
+        < Text style={styles.insta}> InstaPic</Text>
+        </View>
+
+        {
+        this.state.loader ?
+          <FlatList
             data={this.state.posts}
-            navigation= {this.props.navigation}
+            keyExtractor={(data) => data.id}
+            renderItem={({ item }) => 
+            <View>
+            < Post data={item}{...this.props} />
+            </View>
+            }
+          >
+          </FlatList>
+          :
+          <ActivityIndicator size="large" color="black" style={styles.loader} />}
+        <Posteos
+          data={this.state.posts}
+          navigation={this.props.navigation}
         />
       </View>
     )
@@ -63,26 +72,27 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: '#E0E4EC'
-  
+
   },
-  home:{
+  home: {
     color: 'white'
   },
-  insta:{
+  insta: {
     color: 'black',
     textAlign: 'left',
     fontSize: 25,
   },
-  isa:{
+  isa: {
     flexDirection: 'row',
     marginLeft: 7,
-    marginTop: 10
+    marginTop: 15,
+    marginBottom: 15
   },
-  loader:{
+  loader: {
     marginTop: 250,
   }
-  
+
 })

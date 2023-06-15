@@ -2,6 +2,7 @@ import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons';
 
 import FunctionalitiesNav from './FunctionalitiesNav'
 import Home from '../screens/Home'
@@ -15,7 +16,7 @@ const Tab = createBottomTabNavigator()
 class HomeMenu extends Component {
     render() {
         return (
-            <Tab.Navigator>
+            <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
                 <Tab.Screen
                     name='FunctionalitiesNav'
                     component={FunctionalitiesNav}
@@ -23,13 +24,13 @@ class HomeMenu extends Component {
                         headerShown: false,
                         tabBarIcon: () => <AntDesign name='home' size={24} />
                     }} />
-                       
+
                 <Tab.Screen
-                    name='ProfileData'
-                    component={ProfileData}
+                    name='Buscador'
+                    component={BuscadorUsuarios}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ()=>  <AntDesign name= 'user' size={24}/> 
+                        tabBarIcon: () => <Ionicons name="search-outline" size={24} />
                     }}
                 />
 
@@ -41,14 +42,16 @@ class HomeMenu extends Component {
                         tabBarIcon: () => <AntDesign name='pluscircleo' size={24} />
                     }}
                 />
+
                 <Tab.Screen
-                    name='Buscador'
-                    component={BuscadorUsuarios}
+                    name='ProfileData'
+                    component={ProfileData}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ()=>  <AntDesign name= '"md-person-circle-outline"' size={24}/> 
+                        tabBarIcon: () => <AntDesign name='user' size={24} />
                     }}
                 />
+
 
             </Tab.Navigator>
         )
