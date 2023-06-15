@@ -1,8 +1,10 @@
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
+import Post from '../components/Post'
 import { FontAwesome } from "@expo/vector-icons";
+
 
 import BuscadorFiltrado from '../components/BuscadorFiltrado'
 
@@ -11,12 +13,14 @@ export default class Home extends Component {
     super(props)
     this.state = {
       posts: [],
+      loader:false
     
     }
   }
   actualizadorDeEstado(data){
     this.setState({
-        posts:data
+        posts:data,
+        
     })
 }
 
@@ -33,7 +37,7 @@ export default class Home extends Component {
 
       this.setState({
         posts: arrDocs,
-
+        loader:true
       })
     })
   }
@@ -44,6 +48,11 @@ export default class Home extends Component {
       <View style= {styles.container}>
        <View style={styles.isa}> <FontAwesome name="camera" size={24} color="violet" /> < Text style= {styles.insta}>InstaPic</Text>
  </View>
+ {this.state.loader?
+                <FlatList  data={this.state.posts} keyExtractor={(data)=>data.id} renderItem={({item})=>< Post data={item}{...this.props}/>}
+                >
+                    
+                </FlatList>: <ActivityIndicator size="large" color="black"/>}
         <Posteos
             data={this.state.posts}
             navigation= {this.props.navigation}
