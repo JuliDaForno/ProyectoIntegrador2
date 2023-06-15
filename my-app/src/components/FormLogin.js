@@ -10,7 +10,6 @@ class FormLogin extends Component {
             email: '',
             password: ''
         }
-
     }
 
     entrar(email, password) {
@@ -18,11 +17,12 @@ class FormLogin extends Component {
             .then(resp => this.props.navigation.navigate('HomeMenu'))
             .catch(err => console.log(err))
     }
+
     render() {
         return (
-            <View style = {styles.body}>
+            <View style={styles.body}>
                 <TextInput
-                    placeholder='Ingresa tu email'
+                    placeholder='Ingresa tu email ...'
                     keyboardType='email-address'
                     value={this.state.email}
                     onChangeText={(text) => this.setState({ email: text })}
@@ -31,7 +31,7 @@ class FormLogin extends Component {
                 </TextInput>
 
                 <TextInput
-                    placeholder='Ingresa tu password'
+                    placeholder='Ingresa tu contraseña ...'
                     keyboardType='default'
                     value={this.state.password}
                     onChangeText={(text) => this.setState({ password: text })}
@@ -57,28 +57,36 @@ const styles = StyleSheet.create({
        
     },
     input: {
+        color: 'rgb(0,0,0)',
+        borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'green',
-        marginTop: 24,
-        height: 24,
-        padding: 5,
-        color:'white'
-         
+        borderColor: 'rgb(0,0,0)',
+        backgroundColor: 'rgb(255,255,255)',
+        padding: 10,
+        margin: 10
     },
     boton: {
-        marginTop: 32,
-        backgroundColor: 'green',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: 'black',
+        backgroundColor: '#A3A0FD',
+        margin: 10,
+        color: 'white',
         padding: 10,
-        borderRadius: 20,
+        textAlign: 'center',
+        borderRadius: 8
     },
     btnText: {
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'white'
+        color: 'black'
     },
     body:{
-        backgroundColor: 'black',
-        color:'white'
+        flex: 1,
+        backgroundColor: 'white',
+        color: 'rgb(255,255,255)',
+        padding: 15,
+        justifyContent: 'center',
     }
 })
 export default FormLogin
