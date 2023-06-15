@@ -2,6 +2,8 @@ import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import Posteos from '../components/Posteos'
+import { FontAwesome } from "@expo/vector-icons";
+
 import BuscadorFiltrado from '../components/BuscadorFiltrado'
 
 export default class Home extends Component {
@@ -38,8 +40,10 @@ export default class Home extends Component {
   
   render() {
     return (
+     
       <View style= {styles.container}>
-       
+       <View style={styles.isa}> <FontAwesome name="camera" size={24} color="violet" /> < Text style= {styles.insta}>InstaPic</Text>
+ </View>
         <Posteos
             data={this.state.posts}
             navigation= {this.props.navigation}
@@ -57,6 +61,16 @@ const styles = StyleSheet.create({
   },
   home:{
     color: 'white'
+  },
+  insta:{
+    color: 'black',
+    textAlign: 'left',
+    fontSize: 25,
+
+    
+  },
+  isa:{
+    flexDirection: 'row'
   }
   
 })

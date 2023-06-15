@@ -14,10 +14,12 @@ class ProfileUsers extends Component {
       userInfo:[],
         props: props,
         posteos:[],
+       
         
     }
 }
 componentDidMount(){
+  
   console.log(this.props)
   db.collection('users')
   .where('owner', '==', this.state.props.route.params.email).onSnapshot(
@@ -30,7 +32,8 @@ componentDidMount(){
             })
             console.log(arrUser);
             this.setState({
-              infoUser: arrUser[0]
+              infoUser: arrUser[0],
+              
             })
             
         })
