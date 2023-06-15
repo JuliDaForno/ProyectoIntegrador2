@@ -46,7 +46,7 @@ export default class Home extends Component {
     return (
      
       <View style= {styles.container}>
-       <View style={styles.isa}> <FontAwesome name="camera" size={24} color="violet" /> < Text style= {styles.insta}>InstaPic</Text>
+       <View style={styles.isa}> <FontAwesome name="camera" size={30} color="#89738C" /> < Text style= {styles.insta}> InstaPic</Text>
  </View>
  {this.state.loader?
                 <FlatList  data={this.state.posts} keyExtractor={(data)=>data.id} renderItem={({item})=>< Post data={item}{...this.props}/>}
@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   isa:{
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginLeft: 7,
+    marginTop: 10
   },
   loader:{
     marginTop: 250,
