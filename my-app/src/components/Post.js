@@ -10,8 +10,8 @@ class Post extends Component {
     this.state = {
       isLiked: false,
       owner: false,
-      cantidadDeLikes: 
-      this.props.data.data.likes.length
+      cantidadDeLikes:
+        this.props.data.data.likes.length
     };
   }
 
@@ -23,15 +23,15 @@ class Post extends Component {
       if (estaMiLike === true) {
         this.setState({
           isLiked: true,
-         
-      
+
+
         });
       }
-      if (auth.currentUser.email === this.props.data.data.owner){
+      if (auth.currentUser.email === this.props.data.data.owner) {
         this.setState({
-            owner: true
+          owner: true
         })
-    }
+      }
     }
   }
 
@@ -45,7 +45,7 @@ class Post extends Component {
         this.setState({
           isLiked: true,
           cantidadDeLikes:
-          this.state.cantidadDeLikes +1,
+            this.state.cantidadDeLikes + 1,
         });
       })
       .catch((err) => console.log(err));
@@ -63,11 +63,12 @@ class Post extends Component {
         this.setState({
           isLiked: false,
           cantidadDeLikes:
-          this.state.cantidadDeLikes -1
+            this.state.cantidadDeLikes - 1
         })
       )
       .catch((err) => console.log(err));
   }
+
   deletePost() {
     db.collection("posts")
       .doc(this.props.data.id)
@@ -86,90 +87,90 @@ class Post extends Component {
     return (
       <View style={styles.container}>
         < View style={styles.cadaPost}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
-          <Text style = {styles.owner}>{this.props.data.data.owner}</Text>
-        </TouchableOpacity>
-        <Image
-          source={{ uri: this.props.data.data.foto }}
-          style={styles.img}
-        />
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileUsers', { email: this.props.data.data.owner })}>
+            <Text style={styles.owner}>{this.props.data.data.owner}</Text>
+          </TouchableOpacity>
+          <Image
+            source={{ uri: this.props.data.data.foto }}
+            style={styles.img}
+          />
 
-        <View style={styles.commentContainer}>
-        <FontAwesome
-                name='comment'
-                size={24}
-                color='#D8E7EB'
-              />
-        <Text style={styles.descripcion}>{this.props.data.data.descripcion}</Text>
-        {console.log(this.props.data.data)}
-        </View>
-       
-        <View>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Comments', {id: this.props.data.id })}
-          >
-            <Text style={styles.comment}>
-              Agregar comentario
-            </Text>
+          <View style={styles.commentContainer}>
+            <FontAwesome
+              name='comment'
+              size={24}
+              color='#D8E7EB'
+            />
+            <Text style={styles.descripcion}>{this.props.data.data.descripcion}</Text>
+            {console.log(this.props.data.data)}
+          </View>
+
+          <View>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Comments', { id: this.props.data.id })}
+            >
+              <Text style={styles.comment}>
+                Agregar comentario
+              </Text>
             </TouchableOpacity>
-        <View> 
-          {this.state.owner ? <TouchableOpacity
-          
-          onPress={() =>
-            
-            this.props.navigation.navigate("ProfileData", {
-              
-              email: this.props.data.data.owner,
-            })
-          }
-        >
-          
-        </TouchableOpacity> : <TouchableOpacity
-       
-          onPress={() =>
-            this.props.navigation.navigate("ProfileUsers", {
-              email: this.props.data.data.owner,
-            })
-          }
-        >
-        </TouchableOpacity>}
-        </View>
-        {console.log(this.props.data.data)}
-        <Text style ={styles.info}>{this.state.cantidadDeLikes} likes</Text>
-        {this.state.isLiked ? (
-          <TouchableOpacity onPress={() => this.unlike()}>
+            <View>
 
-            <FontAwesome name="heart" size={24} color="red" />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity onPress={() => this.like()}>
-            <FontAwesome name="heart-o" size={24} color="red" />
-            
-          </TouchableOpacity>
-          
-        )}
-        <View >
-      
-          <TouchableOpacity
-            onPress={() =>
-              this.props.navigation.navigate("Comments", {
-                id: this.props.data.id,
-              })
-            }
-          >
-          </TouchableOpacity>
+
+              {this.state.owner ?
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("ProfileData", {
+                    email: this.props.data.data.owner,
+                  })
+                  }>
+                </TouchableOpacity>
+
+                : <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate("ProfileUsers", {
+                      email: this.props.data.data.owner,
+                    })
+                  }
+                >
+                </TouchableOpacity>}
+
+
+            </View>
+            {console.log(this.props.data.data)}
+            <Text style={styles.info}>{this.state.cantidadDeLikes} likes</Text>
+            {this.state.isLiked ? (
+              <TouchableOpacity onPress={() => this.unlike()}>
+
+                <FontAwesome name="heart" size={24} color="red" />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={() => this.like()}>
+                <FontAwesome name="heart-o" size={24} color="red" />
+
+              </TouchableOpacity>
+
+            )}
+
+            <View >
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate("Comments", {
+                    id: this.props.data.id,
+                  })
+                }
+              >
+              </TouchableOpacity>
+            </View>
+            {console.log(this.state.owner, 'quien')}
+            {this.state.owner ? (
+              <TouchableOpacity onPress={() => this.deletePost()}>
+                <FontAwesome name="trash-o" size={24} color="red" />
+              </TouchableOpacity>
+            ) : null}
+          </View>
         </View>
-        {console.log(this.state.owner, 'quien')}
-        {this.state.owner ? (
-          <TouchableOpacity onPress={() => this.deletePost()}>
-            <FontAwesome name="trash-o" size={24} color="red" />
-          </TouchableOpacity>
-        ) : null}
       </View>
-      </View>
-      </View>
-) 
-}
+    )
+  }
 }
 const styles = StyleSheet.create({
   container: {
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
   img: {
     height: 300,
     width: 300,
-    borderRadius: 5, 
+    borderRadius: 5,
   },
   cadaPost: {
     margin: 7,
@@ -195,29 +196,29 @@ const styles = StyleSheet.create({
   comment: {
     padding: 10,
     backgroundColor: '#B5AACC',
-    borderRadius:10,
+    borderRadius: 10,
     margin: 10,
 
   },
-  descripcion:{
+  descripcion: {
     padding: 10,
     fontSize: 18,
     margin: 10,
     backgroundColor: '#DDDBE2',
     borderColor: '#C2C2C3'
   },
-  owner:{
+  owner: {
     padding: 10,
     margin: 10,
-    fontWeight: 'bold', 
+    fontWeight: 'bold',
     fontSize: 15,
     backgroundColor: '#9CADCE',
-    borderRadius:10,
+    borderRadius: 10,
     color: '#10254E'
   },
-  commentContainer:{
-    flexDirection: 'row', 
-    alignItems: 'center' ,
+  commentContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     width: 300,
     color: 'white',
     //backgroundColor: 'black',
@@ -225,18 +226,18 @@ const styles = StyleSheet.create({
   img: {
     height: 200,
   },
-  info:{
+  info: {
     color: 'white',
-    
-    
-    
+
+
+
   },
-  nombre:{
-    color:"white"
+  nombre: {
+    color: "white"
   }
-  
-  
-  });
+
+
+});
 
 
 export default Post;

@@ -15,9 +15,6 @@ class ProfileData extends Component {
             posteos: [],
             nombreDeUsuario: '',
             bio: '',
-         
-
-
         }
     }
     componentDidMount() {
