@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from "@expo/vector-icons";
-
-import Home from './Home'
 import Post from '../components/Post';
+
+
 class ProfileData extends Component {
     constructor(props) {
         super(props)
@@ -75,30 +75,39 @@ class ProfileData extends Component {
                     style={styles.info}
                 >
                     <Text style={styles.info}></Text>
-            
+
                     {this.state.userInfo[0]?.data.bio != '' ?
                         <Text style={styles.info}>{this.state.userInfo[0]?.data.bio}</Text>
                         : null}
 
                     <Text>Cantidad de posteos: {this.state.posteos.length}</Text>
-                    
+
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => this.logout()}>
-                    <Text style={styles.info1}>
+                    <Text style={styles.editarPerfil}> 
                         <AntDesign name="logout" size={20} color="white" />
                         Cerrar sesión
                     </Text>
-                    <Text style={styles.textoinfo}  onPress={() => this.props.navigation.navigate("ModificarPerfil")}> Editar Perfil </Text>
-
-                    <FlatList
-                        data={this.state.posteos}
-                        keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => <Post data={item} />}
-                        //la propiedad se llama item porque le estas pasando una propiedad
-                    />
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate("ModificarPerfil")} >
+                    <Text style={styles.editarPerfil}>
+                        <FontAwesome name="gear" size={22} /> 
+                        Editar Perfil
+                    </Text>
+                </TouchableOpacity>
+
+
+                <FlatList
+                    data={this.state.posteos}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => <Post data={item} />}
+                //la propiedad se llama item porque le estas pasando una propiedad
+                />
+
 
 
 
@@ -119,13 +128,13 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '600',
         color: 'white',
-        textAlign: 'center', 
+        textAlign: 'center',
         alignItems: 'center',
         margin: 10,
         backgroundColor: '#9183A7',
 
     },
-    info1: {
+    editarPerfil: {
         fontSize: 13,
         fontWeight: '600',
         color: 'white',
@@ -133,8 +142,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         textAlign: 'center',
         margin: 10,
-        backgroundColor: '#9183A7' ,
-        
+        backgroundColor: '#9183A7',
+        marginRight: 8,
     },
     arrow: {
         alignItems: 'center',
