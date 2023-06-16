@@ -52,7 +52,6 @@ class HomeMenu extends Component {
                     }}
                 />
 
-
             </Tab.Navigator>
         )
     }

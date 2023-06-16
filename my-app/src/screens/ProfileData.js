@@ -93,6 +93,7 @@ class ProfileData extends Component {
                         <AntDesign name="logout" size={20} color="white" />
                         Cerrar sesión
                     </Text>
+                    <Text style={styles.textoinfo}  onPress={() => this.props.navigation.navigate("ModificarPerfil")}> Editar Perfil </Text>
 
                     <FlatList
                         data={this.state.posteos}

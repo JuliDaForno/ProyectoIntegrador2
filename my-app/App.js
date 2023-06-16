@@ -6,8 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import HomeMenu from './src/navigation/HomeMenu';
-
-
+import ModificarPerfil from './src/screens/ModificarPerfil';
 
 const Stack = createNativeStackNavigator()
 export default function App() {
@@ -41,6 +40,7 @@ export default function App() {
         }
         />
         
+        <Stack.Screen name='ModificarPerfil' component={ModificarPerfil} options={{ headerShown: false }} />  
 
         </Stack.Navigator>
       </NavigationContainer>
