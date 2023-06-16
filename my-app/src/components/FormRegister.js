@@ -34,7 +34,17 @@ class FormRegister extends Component {
                     fotoPerfil: FotoPerfil,
                     nombreDeUsuario: nombreDeUsuario,
                 })
-                    .then(res => console.log(res))
+                    .then((res) =>{
+                        this.setState({
+                        inputMail: '',
+                        inputPassword: '',
+                        nombreDeUsuario: '',
+                        bio: '',
+                        FotoPerfil: '',
+                        error: ''  
+                        })
+                    }
+                        )
                     .catch(err => console.log(err))
             })
             .catch(err => {
@@ -85,9 +95,9 @@ class FormRegister extends Component {
                         (
                             <View>
                                 <Text style={styles.error}>{this.state.error}</Text>
-                                <TouchableOpacity style={styles.btn} onPress={() => { }}>
-                                    <Text style={styles.btnText}>Registrarme</Text>
-                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.btn} onPress={() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.bio, this.state.FotoPerfil, this.state.nombreDeUsuario)}>
+                        <Text style={styles.btnText}>Registrarme</Text>
+                    </TouchableOpacity>
                             </View>
                         )
                         :
@@ -99,6 +109,7 @@ class FormRegister extends Component {
                                 </TouchableOpacity>
                             </View>
                         )
+
                 }
 
 
