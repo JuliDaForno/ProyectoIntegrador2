@@ -86,20 +86,19 @@ class ProfileData extends Component {
 
                 <TouchableOpacity
                     onPress={() => this.logout()}>
-                    <Text style={styles.editarPerfil}> 
+                    <Text style={styles.info1}>
                         <AntDesign name="logout" size={20} color="white" />
                         Cerrar sesión
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate("ModificarPerfil")} >
-                    <Text style={styles.editarPerfil}>
-                        <FontAwesome name="gear" size={22} /> 
+                    onPress={() => this.props.navigation.navigate("ModificarPerfil")}>
+                    <Text style={styles.textoinfo}>
+                        <FontAwesome name="gear" size={22} />
                         Editar Perfil
                     </Text>
                 </TouchableOpacity>
-
 
                 <FlatList
                     data={this.state.posteos}
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#9183A7',
 
     },
-    editarPerfil: {
+    info1: {
         fontSize: 13,
         fontWeight: '600',
         color: 'white',
@@ -143,7 +142,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
         backgroundColor: '#9183A7',
-        marginRight: 8,
+
     },
     arrow: {
         alignItems: 'center',
